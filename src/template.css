@@ -1,0 +1,35 @@
+:root {
+    --main-color: #E2E7C6;
+}
+
+.top-nav {
+    background-color: var(--main-color);
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-img {
+    height: calc(2rem + 5vw);
+    margin: 0.7rem;
+}
+
+nav > ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-button-container {
+}
+
+.nav-button-container > button{
+    border: none;
+    background-color: var(--main-color);
+}
+
+.nav-button-container > button:hover{
+    cursor: pointer;
+}
