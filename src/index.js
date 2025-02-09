@@ -22,4 +22,5 @@ import contactSubpage from './contact/contact.js';
     participantsButton.onclick = () => switchSubpage(participantsSubpage);
     communityButton.onclick = () => switchSubpage(communitySubpage);
     contactButton.onclick = () => switchSubpage(contactSubpage);
+    switchSubpage(aboutSubpage);
 })();
