@@ -1,9 +1,11 @@
 :root {
     --main-color: #E2E7C6;
+    --navbar-border-color: #b1b49c;
 }
 
 .top-nav {
     background-color: var(--main-color);
+    border-bottom: 2px solid var(--navbar-border-color);
 }
 
 nav {
