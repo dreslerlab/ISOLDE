@@ -5,7 +5,7 @@
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
 }
 
 .top-nav {
@@ -28,6 +28,7 @@ nav > ul {
     display: flex;
     list-style-type: none;
     flex-wrap: wrap;
+    align-items: end;
 }
 
 .nav-button-container {
@@ -47,11 +48,18 @@ main {
     flex-direction: column;
     align-items: center;
     height: 100%;
-
 }
 
 main > div {
     max-width: 200rem;
-    /* background-color: rgba(241, 234, 224, 0.753); */
     padding: 2rem;
+}
+
+footer {
+    position: relative;
+    clear: both;
+    background-color: var(--main-color);
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+    border-top: 2px solid var(--navbar-border-color)
 }
