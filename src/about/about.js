@@ -47,18 +47,37 @@ The ISoLDE approach proposes large-scale collaborations and home-based studies u
     container.appendChild(ideaSectionText);
     // ideaSection end
 
-    // teamSection sart
+    // teamSection start
 
     const teamSectionTitle = document.createElement('h4');
     teamSectionTitle.textContent = "Team";
     container.appendChild(teamSectionTitle);
 
-    const map = document.createElement('img');
-    container.appendChild(map);
+    const mapContainer = document.createElement("div");
+    mapContainer.classList.add("map-container");
+    const map = document.createElement("img");
     setTimeout(() => {
-        map.src = require('../img/map.png');
+        map.src = require('../img/map.svg');
         map.alt = "Map image";
     }, 0);
+    map.classList.add("map-img");
+    mapContainer.appendChild(map);
+    container.appendChild(mapContainer);
+
+    let mapPoints = [
+        {x: 48.51, y: 43.84, text: "I'm point on the map!"},
+        {x: 52.97, y: 44.89, text: "I'm point on the map!"},
+        {x: 80.49, y: 80.18, text: "I'm point on the map!"}
+    ];
+
+    mapPoints.forEach((point) => {
+        const pointDiv = document.createElement("div");
+        pointDiv.classList.add("map-point");
+        pointDiv.style.top = `${point.y}%`;
+        pointDiv.style.left = `${point.x}%`;
+        mapContainer.appendChild(pointDiv);
+    });
+
 
 
     const teamContainer = document.createElement("div");

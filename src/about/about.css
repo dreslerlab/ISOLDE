@@ -3,21 +3,16 @@
     flex-direction: column;
 }
 
-/* .logo-text-container {
+.logo-text-container {
     display: flex;
     align-self: center;
-} */
-
-.about-container {
-    max-width: 900px;
-    margin: auto;
 }
 
-/* .logo-text-container {
+.logo-text-container {
     display: flex;
     align-items: center;
     gap: 15px;
-} */
+}
 
 .logo-text-container img {
     width: 100px;
@@ -36,6 +31,24 @@
 
 
 /* team start */
+
+
+.map-container {
+    position: relative;
+}
+
+.map-container img {
+    width: 100%;
+}
+
+.map-point {
+    height: 0.8%;
+    aspect-ratio: 1 / 1;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+}
+
 
 @media (min-width:480px){
     .team-container {
@@ -61,6 +74,7 @@
 .profile img {
     aspect-ratio: 10 / 12;
     object-fit: cover;
+    max-width: 80%;
 }
 
 .profile-text {
