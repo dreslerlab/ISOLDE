@@ -22,8 +22,9 @@ nav {
 }
 
 .logo-img {
-    height: calc(2rem + 5vw);
-    margin: calc(0.3rem + 0.3vw);
+    /* height: calc(2rem + 10vw); */
+    height: clamp(3rem, calc(2rem + 5vw), 4rem);
+    /* margin: calc(0.3rem + 0.3vw); */
 }
 
 nav > ul {
@@ -31,6 +32,8 @@ nav > ul {
     list-style-type: none;
     flex-wrap: wrap;
     align-items: end;
+    gap: 0.3rem;
+    margin: 0;
 }
 
 .nav-button-container {
@@ -39,10 +42,28 @@ nav > ul {
 .nav-button-container > button{
     border: none;
     background-color: var(--main-color);
+    padding: 0;
 }
 
 .nav-button-container > button:hover{
     cursor: pointer;
+}
+
+.nav-button-container > button:disabled{
+    cursor: default;
+    font-weight: 700;
+    color: inherit;
+    text-decoration: underline;
+}
+
+li > button::after {
+    display: block;
+    content: attr(title);
+    font-weight: 700;
+    height: 0;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
 }
 
 main {

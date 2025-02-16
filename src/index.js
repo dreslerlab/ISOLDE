@@ -6,21 +6,32 @@ import participantsSubpage from './participants/participants.js';
 import communitySubpage from './community/community.js';
 import contactSubpage from './contact/contact.js';
 
-(() => {
+
+(() => { // route pages
     const subpageContainer = document.querySelector(".subpage-container");
-    const aboutButton = document.querySelector("button.about");
-    const researchersButton = document.querySelector("button.researchers");
-    const participantsButton = document.querySelector("button.participants");
-    const communityButton = document.querySelector("button.community");
-    const contactButton = document.querySelector("button.contact");
+    const buttons = [
+        document.querySelector("button.about"), 
+        document.querySelector("button.researchers"), 
+        document.querySelector("button.participants"),
+        document.querySelector("button.community"),
+        document.querySelector("button.contact")
+    ]
+    const subpages = [
+        aboutSubpage,
+        researchersSubpage,
+        participantsSubpage,
+        communitySubpage,
+        contactSubpage
+    ]
     const switchSubpage = (subpage) => {
         subpageContainer.textContent = "";
         subpageContainer.appendChild(subpage);
     }
-    aboutButton.onclick = () => switchSubpage(aboutSubpage);
-    researchersButton.onclick = () => switchSubpage(researchersSubpage);
-    participantsButton.onclick = () => switchSubpage(participantsSubpage);
-    communityButton.onclick = () => switchSubpage(communitySubpage);
-    contactButton.onclick = () => switchSubpage(contactSubpage);
-    switchSubpage(aboutSubpage);
+
+    buttons.forEach((btn, i) => btn.onclick = () => {
+        switchSubpage(subpages[i]);
+        buttons.forEach(button => button.disabled = false);
+        btn.disabled = true;
+    });
+    buttons[0].click();
 })();

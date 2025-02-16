@@ -113,13 +113,14 @@ The ISoLDE approach proposes large-scale collaborations and home-based studies u
         eventDiv.classList.add("timeline-event", index % 2 === 0 ? "right" : "left");
 
         eventDiv.innerHTML = `
-            <div class="circle"></div>
             <div class="content">
                 <h5>${event.date}</h5>
                 <p>${event.description}</p>
             </div>
         `;
-
+        const circle = document.createElement("div");
+        circle.classList.add("circle");
+        timelineContainer.appendChild(circle);
         timelineContainer.appendChild(eventDiv);
     });
 
