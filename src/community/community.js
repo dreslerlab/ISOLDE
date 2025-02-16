@@ -17,6 +17,7 @@ let communitySubpage = (() => {
     setTimeout(() => {
         insightsSectionImage.src = require("../img/discord.png");
         insightsSectionImage.alt = "Insigts examples screenprint";
+        insightsSectionImage.style.maxWidth = `${100}%`;
     })
     container.appendChild(insightsSectionImage);
 

@@ -103,3 +103,12 @@ footer {
     border-top: 2px solid var(--navbar-border-color);
     justify-self: flex-end;
 }
+
+.zoomable {
+    transition: transform 0.2s ease-in-out;
+    touch-action: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+  }

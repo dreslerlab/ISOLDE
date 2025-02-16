@@ -55,13 +55,18 @@ The ISoLDE approach proposes large-scale collaborations and home-based studies u
 
     const mapContainer = document.createElement("div");
     mapContainer.classList.add("map-container");
+
+    const zoomDiv = document.createElement("div");
+    zoomDiv.classList.add("zoomable");
+    mapContainer.appendChild(zoomDiv);
+
     const map = document.createElement("img");
     setTimeout(() => {
         map.src = require('../img/map.svg');
         map.alt = "Map image";
     }, 0);
     map.classList.add("map-img");
-    mapContainer.appendChild(map);
+    zoomDiv.appendChild(map);
     container.appendChild(mapContainer);
 
     let mapPoints = [
@@ -75,9 +80,43 @@ The ISoLDE approach proposes large-scale collaborations and home-based studies u
         pointDiv.classList.add("map-point");
         pointDiv.style.top = `${point.y}%`;
         pointDiv.style.left = `${point.x}%`;
-        mapContainer.appendChild(pointDiv);
+        zoomDiv.appendChild(pointDiv);
     });
 
+    let scale = 1;
+    let startDistance = 0;
+
+    // Handle touchpad pinch & mouse scroll zoom
+    zoomDiv.addEventListener("wheel", function (event) {
+        if (event.ctrlKey || event.deltaY !== 0) { 
+            event.preventDefault();
+            scale += event.deltaY * -0.01;
+            scale = Math.min(Math.max(1, scale), 3);
+            zoomDiv.style.transform = `scale(${scale})`;
+        }
+    });
+
+    // Handle mobile pinch-to-zoom
+    zoomDiv.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) { 
+            startDistance = getDistance(e.touches[0], e.touches[1]);
+        }
+    });
+
+    zoomDiv.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            let newDistance = getDistance(e.touches[0], e.touches[1]);
+            let zoomFactor = newDistance / startDistance;
+            scale = Math.min(Math.max(1, scale * zoomFactor), 3);
+            zoomDiv.style.transform = `scale(${scale})`;
+        }
+    });
+
+    // Function to get touch distance
+    function getDistance(touch1, touch2) {
+        return Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+    }
 
 
     const teamContainer = document.createElement("div");
@@ -144,7 +183,6 @@ The ISoLDE approach proposes large-scale collaborations and home-based studies u
     });
 
     container.appendChild(timelineContainer);
-
 
     return container;
 })();
