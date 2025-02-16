@@ -40,13 +40,15 @@ let aboutSubpage = (() => {
     ideaSectionTitle.textContent = "What is the idea?";
     container.appendChild(ideaSectionTitle);
 
-    const ideaSectionText = document.createElement('p');
-    ideaSectionText.textContent = `Lucid dreaming (LD), the awareness of dreaming during sleep, has gained scientific interest due to its clinical potential and benefits, such as treating chronic nightmares, narcolepsy, and PTSD, as well as enhancing creativity and problem-solving. Eye movements performed after gaining dream awareness have become the research standard. Despite its promise, LD remains rare, with only 53% experiencing it once and 23% regularly (Saunders, 2016). This rarity poses challenges, as the neuroscience of LD is still partially understood.
-
-Methods like Wake Back to Bed (WBTB), reality testing, and sensory stimulation during REM sleep aim to induce LD, but risks like sleep disruption and paralysis highlight the need for safer techniques. Neurobiological studies show changes in EEG patterns during LD but remain inconclusive due to methodological variability and participant differences.
-
-The ISoLDE approach proposes large-scale collaborations and home-based studies using wearable EEG devices to address challenges like small sample sizes and costly lab setups. Involving LD enthusiasts with extensive experience may uncover nuances in the phenomenon and improve induction methods. Harnessing these insights could enhance both awareness and control in LD, paving the way for effective therapeutic applications.`
-    container.appendChild(ideaSectionText);
+    const para1 = document.createElement('p');
+    const para2 = document.createElement('p');
+    const para3 = document.createElement('p');
+    para1.textContent = "Lucid dreaming (LD), the awareness of dreaming during sleep, has gained scientific interest due to its clinical potential and benefits, such as treating chronic nightmares, narcolepsy, and PTSD, as well as enhancing creativity and problem-solving. Eye movements performed after gaining dream awareness have become the research standard. Despite its promise, LD remains rare, with only 53% experiencing it once and 23% regularly (Saunders, 2016). This rarity poses challenges, as the neuroscience of LD is still partially understood.";
+    para2.textContent = "Methods like Wake Back to Bed (WBTB), reality testing, and sensory stimulation during REM sleep aim to induce LD, but risks like sleep disruption and paralysis highlight the need for safer techniques. Neurobiological studies show changes in EEG patterns during LD but remain inconclusive due to methodological variability and participant differences.";
+    para3.textContent = "The ISoLDE approach proposes large-scale collaborations and home-based studies using wearable EEG devices to address challenges like small sample sizes and costly lab setups. Involving LD enthusiasts with extensive experience may uncover nuances in the phenomenon and improve induction methods. Harnessing these insights could enhance both awareness and control in LD, paving the way for effective therapeutic applications.";
+    container.appendChild(para1);
+    container.appendChild(para2);
+    container.appendChild(para3);
     // ideaSection end
 
     // teamSection start
