@@ -4,7 +4,6 @@ import aboutSubpage from './about/about.js';
 import researchersSubpage from './researchers/researchers.js';
 import participantsSubpage from './participants/participants.js';
 import communitySubpage from './community/community.js';
-import contactSubpage from './contact/contact.js';
 
 
 (() => { // route pages
@@ -14,14 +13,14 @@ import contactSubpage from './contact/contact.js';
         document.querySelector("button.researchers"), 
         document.querySelector("button.participants"),
         document.querySelector("button.community"),
-        document.querySelector("button.contact")
+        // document.querySelector("button.contact")
     ]
     const subpages = [
         aboutSubpage,
         researchersSubpage,
         participantsSubpage,
         communitySubpage,
-        contactSubpage
+        // contactSubpage
     ]
     const switchSubpage = (subpage) => {
         subpageContainer.textContent = "";
@@ -33,5 +32,10 @@ import contactSubpage from './contact/contact.js';
         buttons.forEach(button => button.disabled = false);
         btn.disabled = true;
     });
+
+    const contactButton = document.querySelector("button.contact");
+    contactButton.onclick = () => window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
+
+    // website initial content
     buttons[0].click();
 })();

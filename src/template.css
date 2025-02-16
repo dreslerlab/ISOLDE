@@ -10,6 +10,10 @@ body {
     flex-direction: column;
 }
 
+body {
+    scroll-behavior: smooth;
+}
+
 .top-nav {
     background-color: var(--main-color);
     border-bottom: 2px solid var(--navbar-border-color);
