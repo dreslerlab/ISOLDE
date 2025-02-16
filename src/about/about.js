@@ -1,4 +1,7 @@
 import './about.css';
+import mapSection from './map-section/map.js';
+import teamContainer from './team-pictures-section/team-pictures.js';
+import timelineContainer from './timeline-section/timeline-section.js';
 
 let aboutSubpage = (() => {
     const container = document.createElement("div");
@@ -13,7 +16,6 @@ let aboutSubpage = (() => {
         logo.src = require('../img/isolde-logo.svg');
         logo.alt = "ISOLDE logo";
     }, 0);
-
 
     const logoTextRightSubContainer = document.createElement("div");
     logoTextRightSubContainer.classList.add("logo-text-subcontainer")
@@ -53,134 +55,15 @@ The ISoLDE approach proposes large-scale collaborations and home-based studies u
     teamSectionTitle.textContent = "Team";
     container.appendChild(teamSectionTitle);
 
-    const mapContainer = document.createElement("div");
-    mapContainer.classList.add("map-container");
-
-    const zoomDiv = document.createElement("div");
-    zoomDiv.classList.add("zoomable");
-    mapContainer.appendChild(zoomDiv);
-
-    const map = document.createElement("img");
-    setTimeout(() => {
-        map.src = require('../img/map.svg');
-        map.alt = "Map image";
-    }, 0);
-    map.classList.add("map-img");
-    zoomDiv.appendChild(map);
-    container.appendChild(mapContainer);
-
-    let mapPoints = [
-        {x: 48.51, y: 43.84, text: "I'm point on the map!"},
-        {x: 52.97, y: 44.89, text: "I'm point on the map!"},
-        {x: 80.49, y: 80.18, text: "I'm point on the map!"}
-    ];
-
-    mapPoints.forEach((point) => {
-        const pointDiv = document.createElement("div");
-        pointDiv.classList.add("map-point");
-        pointDiv.style.top = `${point.y}%`;
-        pointDiv.style.left = `${point.x}%`;
-        zoomDiv.appendChild(pointDiv);
-    });
-
-    let scale = 1;
-    let startDistance = 0;
-
-    // Handle touchpad pinch & mouse scroll zoom
-    zoomDiv.addEventListener("wheel", function (event) {
-        if (event.ctrlKey || event.deltaY !== 0) { 
-            event.preventDefault();
-            scale += event.deltaY * -0.01;
-            scale = Math.min(Math.max(1, scale), 3);
-            zoomDiv.style.transform = `scale(${scale})`;
-        }
-    });
-
-    // Handle mobile pinch-to-zoom
-    zoomDiv.addEventListener("touchstart", (e) => {
-        if (e.touches.length === 2) { 
-            startDistance = getDistance(e.touches[0], e.touches[1]);
-        }
-    });
-
-    zoomDiv.addEventListener("touchmove", (e) => {
-        if (e.touches.length === 2) {
-            e.preventDefault();
-            let newDistance = getDistance(e.touches[0], e.touches[1]);
-            let zoomFactor = newDistance / startDistance;
-            scale = Math.min(Math.max(1, scale * zoomFactor), 3);
-            zoomDiv.style.transform = `scale(${scale})`;
-        }
-    });
-
-    // Function to get touch distance
-    function getDistance(touch1, touch2) {
-        return Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-    }
-
-
-    const teamContainer = document.createElement("div");
-    teamContainer.classList.add("team-container");
-
-    const teamProfiles = [
-        { name: "Karolina Raczek", university: "JU, Poland", email: "Mail", img: require("../img/karolina.png") },
-        { name: "Karolina Raczek", university: "JU, Poland", email: "Mail", img: require("../img/karolina.png") },
-        { name: "Karolina Raczek", university: "JU, Poland", email: "Mail", img: require("../img/karolina.png") },
-        { name: "Karolina Raczek", university: "JU, Poland", email: "Mail", img: require("../img/karolina.png") },
-        { name: "Karolina Raczek", university: "JU, Poland", email: "Mail", img: require("../img/karolina.png") },
-        { name: "Karolina Raczek", university: "JU, Poland", email: "Mail", img: require("../img/karolina.png") },
-    ];
-
-    teamProfiles.forEach(profile => {
-        const profileDiv = document.createElement("div");
-        profileDiv.classList.add("profile");
-
-        const img = document.createElement("img");
-        img.src = profile.img;
-        img.alt = profile.name;
-
-        const textDiv = document.createElement("div");
-        textDiv.classList.add("profile-text");
-        textDiv.innerHTML = `<strong>${profile.name}</strong><br>${profile.university}<br>${profile.email}`;
-
-        profileDiv.appendChild(img);
-        profileDiv.appendChild(textDiv);
-
-        teamContainer.appendChild(profileDiv);
-    });
-
+    container.appendChild(mapSection);
     container.appendChild(teamContainer);
+
     // teamSection end
 
     // Timeline Section
     const timelineSectionTitle = document.createElement('h4');
     timelineSectionTitle.textContent = "Timeline";
     container.appendChild(timelineSectionTitle);
-
-    const timelineContainer = document.createElement("div");
-    timelineContainer.classList.add("timeline-container");
-
-    const timelineEvents = [
-        { date: "JANUARY 2025", description: "TEXT TEXT TEXTX" },
-        { date: "DECEMBER 2025", description: "TEXT TEXT TEXTX" },
-        { date: "JUNE 2026", description: "TEXT TEXT TEXTX" }
-    ];
-
-    timelineEvents.forEach((event, index) => {
-        const eventDiv = document.createElement("div");
-        eventDiv.classList.add("timeline-event", index % 2 === 0 ? "right" : "left");
-
-        eventDiv.innerHTML = `
-            <div class="content">
-                <h5>${event.date}</h5>
-                <p>${event.description}</p>
-            </div>
-        `;
-        const circle = document.createElement("div");
-        circle.classList.add("circle");
-        timelineContainer.appendChild(circle);
-        timelineContainer.appendChild(eventDiv);
-    });
 
     container.appendChild(timelineContainer);
 

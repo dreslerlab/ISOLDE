@@ -38,6 +38,10 @@
     overflow: auto;
 }
 
+.zoom-div {
+    transform-origin: top left;
+}
+
 .map-container img {
     width: 100%;
 }

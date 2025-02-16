@@ -1,0 +1,25 @@
+
+.map-container {
+    position: relative;
+    overflow: auto;
+}
+
+.zoom-div {
+    transform-origin: top left;
+}
+
+.map-container img {
+    width: 100%;
+}
+
+.map-point {
+    height: 0.8%;
+    aspect-ratio: 1 / 1;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.map-point:hover {
+    cursor: pointer;
+}
