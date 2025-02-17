@@ -26,9 +26,7 @@ nav {
 }
 
 .logo-img {
-    /* height: calc(2rem + 10vw); */
     height: clamp(3rem, calc(2rem + 5vw), 4rem);
-    /* margin: calc(0.3rem + 0.3vw); */
 }
 
 nav > ul {
@@ -83,7 +81,7 @@ main > div > p {
 
 main > div {
     max-width: 200rem;
-    padding: 2rem;
+    padding: clamp(0.5rem, 0.5rem + 1vw, 2rem);
     max-width: 900px;
     margin: auto;
 }
@@ -101,13 +99,4 @@ footer {
     padding-bottom: 1rem;
     border-top: 2px solid var(--navbar-border-color);
     justify-self: flex-end;
-}
-
-.zoomable {
-    transition: transform 0.2s ease-in-out;
-    touch-action: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: scroll;
 }
