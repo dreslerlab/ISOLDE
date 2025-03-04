@@ -1,7 +1,7 @@
 import './map.css';
 import mapModalContainer from './map-modal';
 
-const mapSection = (() => {
+const mapSection = (mapPoints) => {
     const mapContainer = document.createElement("div");
     mapContainer.classList.add("map-container");
 
@@ -17,12 +17,6 @@ const mapSection = (() => {
     map.classList.add("map-img");
     zoomDiv.appendChild(map);
 
-    let mapPoints = [
-        {x: 48.51, y: 43.84, name: "Cool Facility", description: "I'm cool facility"},
-        {x: 52.97, y: 44.89, name: "Extra Facility", description: "I'm extra facility"},
-        {x: 80.49, y: 80.18, name: "Giga Facility", description: "I'm giga facility"}
-    ];
-   
     mapPoints.forEach((point) => {
         const pointDiv = document.createElement("div");
         pointDiv.classList.add("map-point");
@@ -88,6 +82,6 @@ const mapSection = (() => {
     
 
     return mapContainer;
-})();
+};
 
 export default mapSection;

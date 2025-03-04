@@ -1,0 +1,41 @@
+{
+    "about": [
+        {
+            "type": "text",
+            "header": "Test1",
+            "paragraphs": [
+                "Pararaph1",
+                "Pararaph2",
+                "Pararaph3"
+            ]
+        },
+        {
+            "type": "text",
+            "header": "What is the idea?",
+            "paragraphs": [
+                "Lucid dreaming (LD), the awareness of dreaming during sleep, has gained scientific interest due to its clinical potential and benefits, such as treating chronic nightmares, narcolepsy, and PTSD, as well as enhancing creativity and problem-solving. Eye movements performed after gaining dream awareness have become the research standard. Despite its promise, LD remains rare, with only 53% experiencing it once and 23% regularly (Saunders, 2016). This rarity poses challenges, as the neuroscience of LD is still partially understood.",
+                "Methods like Wake Back to Bed (WBTB), reality testing, and sensory stimulation during REM sleep aim to induce LD, but risks like sleep disruption and paralysis highlight the need for safer techniques. Neurobiological studies show changes in EEG patterns during LD but remain inconclusive due to methodological variability and participant differences.",
+                "The ISoLDE approach proposes large-scale collaborations and home-based studies using wearable EEG devices to address challenges like small sample sizes and costly lab setups. Involving LD enthusiasts with extensive experience may uncover nuances in the phenomenon and improve induction methods. Harnessing these insights could enhance both awareness and control in LD, paving the way for effective therapeutic applications."
+            ]
+        },
+        {
+            "type": "map",
+            "mapPoints": [
+                {"x": 48.51, "y": 43.84, "name": "Cool Facility", "description": "I'm cool facility"},
+                {"x": 52.97, "y": 44.89, "name": "Extra Facility", "description": "I'm extra facility"},
+                {"x": 80.49, "y": 80.18, "name": "Giga Facility", "description": "I'm giga facility"}
+            ]
+        },
+        {
+            "type": "teamPhotos",
+            "people": [
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
+                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
+                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
+                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
+                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
+                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"}
+            ]
+        }
+    ]
+}
