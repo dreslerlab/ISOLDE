@@ -13,9 +13,9 @@ const teamContainer = (teamProfiles) => {
         profileDiv.classList.add("profile");
 
         const img = document.createElement("img");
-        img.src = fetch(profile.url);
+        img.src = profile.url;
         img.alt = profile.name;
-
+        
         const textDiv = document.createElement("div");
         textDiv.classList.add("profile-text");
         textDiv.innerHTML = `<strong>${profile.name}</strong><br>${profile.university}<br>${profile.email}`;

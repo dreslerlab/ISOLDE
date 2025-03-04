@@ -29,12 +29,12 @@
         {
             "type": "teamPhotos",
             "people": [
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
-                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
-                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
-                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
-                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"},
-                { "name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "../../img/karolina.png"}
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"}
             ]
         }
     ]
