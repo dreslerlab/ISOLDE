@@ -54,8 +54,8 @@ nav > ul {
     cursor: default;
     font-weight: 700;
     color: inherit;
-    text-decoration: underline;
 }
+
 
 li > button::after {
     display: block;
