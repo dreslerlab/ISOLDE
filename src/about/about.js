@@ -1,6 +1,4 @@
 import './about.css';
-// import teamContainer from '../components/team-pictures-section/team-pictures.js';
-import timelineContainer from './timeline-section/timeline-section.js';
 import aboutContent from '../content.json'
 import componentsLoader from '../components/components-loader.js';
 
@@ -37,22 +35,6 @@ let aboutSubpage = (() => {
     container.appendChild(logoTextContainer);
 
     componentsLoader(aboutContent.about, container);
-
-    const teamSectionTitle = document.createElement('h4');
-    teamSectionTitle.textContent = "Team";
-    container.appendChild(teamSectionTitle);
-
-    // container.appendChild(teamContainer);
-
-    // teamSection end
-
-    // Timeline Section
-    const timelineSectionTitle = document.createElement('h4');
-    timelineSectionTitle.textContent = "Timeline";
-    container.appendChild(timelineSectionTitle);
-
-    container.appendChild(timelineContainer);
-
     return container;
 })();
 

@@ -2,15 +2,6 @@
     "about": [
         {
             "type": "text",
-            "header": "Test1",
-            "paragraphs": [
-                "Pararaph1",
-                "Pararaph2",
-                "Pararaph3"
-            ]
-        },
-        {
-            "type": "text",
             "header": "What is the idea?",
             "paragraphs": [
                 "Lucid dreaming (LD), the awareness of dreaming during sleep, has gained scientific interest due to its clinical potential and benefits, such as treating chronic nightmares, narcolepsy, and PTSD, as well as enhancing creativity and problem-solving. Eye movements performed after gaining dream awareness have become the research standard. Despite its promise, LD remains rare, with only 53% experiencing it once and 23% regularly (Saunders, 2016). This rarity poses challenges, as the neuroscience of LD is still partially understood.",
@@ -35,6 +26,18 @@
                 {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
                 {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
                 {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"}
+            ]
+        },
+        {
+            "type": "text",
+            "header": "Timeline"
+        },
+        {
+            "type": "timeline",
+            "timelineEvents": [
+                { "date": "JANUARY 2025", "description": "TEXT TEXT TEXTX" },
+                { "date": "DECEMBER 2025", "description": "TEXT TEXT TEXTX" },
+                { "date": "JUNE 2026", "description": "TEXT TEXT TEXTX" }
             ]
         }
     ]

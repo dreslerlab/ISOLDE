@@ -1,14 +1,16 @@
 import './timeline-section.css';
 
-const timelineSection = (() => {
+const timelineSection = (componentJSON) => {
+    const timelineEvents = componentJSON.timelineEvents;
     const timelineContainer = document.createElement("div");
-    timelineContainer.classList.add("timeline-container");
 
-    const timelineEvents = [
-        { date: "JANUARY 2025", description: "TEXT TEXT TEXTX" },
-        { date: "DECEMBER 2025", description: "TEXT TEXT TEXTX" },
-        { date: "JUNE 2026", description: "TEXT TEXT TEXTX" }
-    ];
+    if (componentJSON.header) {
+        const header = document.createElement("h4");
+        header.textContent = componentJSON.header;
+        timelineContainer.appendChild(header);
+    }
+
+    timelineContainer.classList.add("timeline-container");
 
     timelineEvents.forEach((event, index) => {
         const eventDiv = document.createElement("div");
@@ -27,6 +29,6 @@ const timelineSection = (() => {
     });
 
     return timelineContainer;
-})();
+};
 
 export default timelineSection;

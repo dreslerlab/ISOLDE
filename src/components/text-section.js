@@ -5,11 +5,13 @@ const textSection = (content) => {
         header.textContent = content.header;
         container.appendChild(header);
     };
-    content.paragraphs.forEach(e => {
-        const paragraph = document.createElement("p");
-        paragraph.textContent = e;
-        container.appendChild(paragraph);
-    });
+    if (content.paragraphs) {
+        content.paragraphs.forEach(e => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = e;
+            container.appendChild(paragraph);
+        });
+    };
     return container
 };
 

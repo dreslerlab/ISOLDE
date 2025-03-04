@@ -1,6 +1,7 @@
 import textSection from './text-section.js'
 import mapSection from './map-section/map.js';
 import teamPhotos from './team-pictures-section/team-pictures.js';
+import timelineSection from './timeline-section/timeline-section.js';
 
 const createFromComponent = (component) => {
     switch (component.type) {
@@ -9,9 +10,9 @@ const createFromComponent = (component) => {
         case "map":
             return mapSection(component.mapPoints);
         case "teamPhotos":
-            console.log("loader");
-            console.log(component.people);
             return teamPhotos(component.people);
+        case "timeline":
+            return timelineSection(component);
     };
 };
 
