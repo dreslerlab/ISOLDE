@@ -19,7 +19,6 @@ const createFromComponent = (component) => {
 const componentsLoader = (componentsJSON, container) => {
     componentsJSON.forEach(component => {
         const tmp = createFromComponent(component);
-        console.log(tmp);
         container.appendChild(tmp);
     });
 };

@@ -5,10 +5,7 @@ const teamContainer = (teamProfiles) => {
     const teamContainer = document.createElement("div");
     teamContainer.classList.add("team-container");
 
-    console.log(teamProfiles);
     teamProfiles.forEach(profile => {
-        console.log(profile);
-        console.log("test");
         const profileDiv = document.createElement("div");
         profileDiv.classList.add("profile");
 
