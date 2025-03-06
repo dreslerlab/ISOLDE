@@ -29,10 +29,6 @@
             ]
         },
         {
-            "type": "text",
-            "header": "Timeline"
-        },
-        {
             "type": "timeline",
             "timelineEvents": [
                 { "date": "JANUARY 2025", "description": "TEXT TEXT TEXTX" },

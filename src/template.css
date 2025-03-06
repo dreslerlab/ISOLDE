@@ -99,8 +99,17 @@ footer {
     position: relative;
     clear: both;
     background-color: var(--main-color);
-    padding: 0.5rem;
+    padding: 0.7rem;
     padding-bottom: 1rem;
-    border-top: 2px solid var(--navbar-border-color);
+    padding-top: 0.7rem;
     justify-self: flex-end;
+    font-size: 1.05rem;
+}
+
+footer > h4 {
+    margin: 0;
+    margin-bottom: 0.2rem;
+    color: #756f52;
+    font-weight: 450;
+    font-size: clamp(1rem, 1rem + 1vw, 1.4rem);
 }
