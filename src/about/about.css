@@ -1,6 +1,7 @@
 .about-container {
     display: flex;
     flex-direction: column;
+    text-align: justify;
 }
 
 .logo-text-container {
@@ -15,7 +16,6 @@
 }
 
 .logo-text-container img {
-    /* width: 100px; */
     width: clamp(100px, 100px + 10vw, 400px)
 }
 

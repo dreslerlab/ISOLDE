@@ -1,5 +1,5 @@
 import './about.css';
-import aboutContent from '../content.json'
+import content from '../content.json'
 import componentsLoader from '../components/components-loader.js';
 
 let aboutSubpage = (() => {
@@ -34,7 +34,7 @@ let aboutSubpage = (() => {
 
     container.appendChild(logoTextContainer);
 
-    componentsLoader(aboutContent.about, container);
+    componentsLoader(content.about, container);
     return container;
 })();
 
