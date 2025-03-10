@@ -56,5 +56,16 @@
                 "Participants should document their LD induction method in detail, either in writing or verbally, depending on their preference. For the first 3 weeks, participants will be asked to induce LD in the standard way; in the last week of the study, participants will be asked to stop induction (control week), however, continue to wear the EEG band. The control group will be gender- and age-matched with the LD expert group, never experiencing LD. They will be asked to wear a wearable EEG for a week while sleeping. Before the experiment, control group will fill out a battery of questionnaires (group A). They will record each night and complete questionnaires (group B) each evening/morning without free-form documentation. Once a week, participants will be asked to fill out questionnaires from group C."
             ]
         }
+    ],
+    "community": [
+        {
+            "type": "unorderedList",
+            "header": "For Practitioners:",
+            "listItems": [
+                "Connect with Researchers and Fellow Dreamers: Share your lucid dreaming experiences and techniques with both fellow practitioners and experts in the field. Learn new methods for inducing and controlling dreams, as well as how lucid dreaming can enhance creativity and problem-solving.",
+                "Support and Advice: The community is a space for support. Whether you're struggling with dream recall, trying to enhance your control during lucid dreams, or facing specific challenges like nightmares, you’ll find guidance and encouragement from those with similar experiences.",
+                "Share Your Journey: Discuss your experiences with others, ask questions, and share insights about the emotional and cognitive aspects of lucid dreaming. Your story could help researchers refine their understanding of this fascinating phenomenon."
+            ]
+        }
     ]
 }

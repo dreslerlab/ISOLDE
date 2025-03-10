@@ -1,4 +1,6 @@
 import './community.css';
+import content from '../content.json'
+import componentsLoader from '../components/components-loader.js';
 
 let communitySubpage = (() => {
     const container = document.createElement("div");
