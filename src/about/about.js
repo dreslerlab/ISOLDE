@@ -1,8 +1,7 @@
 import './about.css';
-import content from '../content.json'
 import componentsLoader from '../components/components-loader.js';
 
-let aboutSubpage = (() => {
+let aboutSubpage = (content) => {
     const container = document.createElement("div");
     container.classList.add("about-container");
         
@@ -36,7 +35,7 @@ let aboutSubpage = (() => {
 
     componentsLoader(content.about, container);
     return container;
-})();
+};
 
 
 export default aboutSubpage;

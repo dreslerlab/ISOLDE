@@ -1,8 +1,7 @@
 import './community.css';
-import content from '../content.json'
 import componentsLoader from '../components/components-loader.js';
 
-let communitySubpage = (() => {
+let communitySubpage = (content) => {
     const container = document.createElement("div");
     const communityLink = document.createElement("a");
     communityLink.target="_blank";
@@ -30,7 +29,7 @@ let communitySubpage = (() => {
     componentsLoader(content.community, container);
 
     return container;
-})();
+};
 
 
 export default communitySubpage;

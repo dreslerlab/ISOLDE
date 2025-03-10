@@ -1,9 +1,8 @@
 import './participants.css';
 import '../components/components-loader.js';
-import content from '../content.json';
 import componentsLoader from '../components/components-loader.js';
 
-let participantsSubpage = (() => {
+let participantsSubpage = (content) => {
     const container = document.createElement("div");
 
     const reachOutSection = document.createElement("h4");
@@ -12,7 +11,7 @@ let participantsSubpage = (() => {
 
     componentsLoader(content.participants, container);
     return container;
-})();
+};
 
 
 export default participantsSubpage;
