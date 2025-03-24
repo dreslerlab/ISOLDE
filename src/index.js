@@ -99,3 +99,7 @@ document.getElementById('submitBtn').addEventListener('click', function(e) {
         alert("No file selected.");
     }
 });
+
+document.getElementById('closeBtn').addEventListener('click', function(e) {
+    document.querySelector(".swap-container").style.display = "none";
+});
