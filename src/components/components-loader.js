@@ -3,6 +3,7 @@ import mapSection from './map-section/map.js';
 import teamPhotos from './team-pictures-section/team-pictures.js';
 import timelineSection from './timeline-section/timeline-section.js';
 import unorderedList from './unordered-list.js';
+import photo from './photo.js';
 
 const createFromComponent = (component) => {
     switch (component.type) {
@@ -16,6 +17,8 @@ const createFromComponent = (component) => {
             return timelineSection(component);
         case "unorderedList":
             return unorderedList(component);
+        case "photo":
+            return photo(component);
     };
 };
 

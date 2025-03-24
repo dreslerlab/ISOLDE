@@ -124,4 +124,10 @@ footer > h4 {
 
 .content-container {
     text-align: justify;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-component {
+    max-width: 100%;
 }
