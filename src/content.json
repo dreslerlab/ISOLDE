@@ -63,7 +63,7 @@
         },
         {
             "type": "photo",
-            "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/diagram.jfif"
+            "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/diagram.svg"
         },
         {
             "type": "text",
@@ -113,19 +113,6 @@
                 "Real-World Insights: Talk with lucid dreamers to better understand the phenomenon, individual differences and its effects.",
                 "Collaborate: Discuss studies with other researchers and find participants. Moreover, lucid dreamers could offer valuable feedback to improve experimental setups.",
                 "Global Network: Connect with scientists and lucid dreamers worldwide."
-            ]
-        },
-        {
-            "type": "text",
-            "header": "Why Discord?"
-        },
-        {
-            "type": "unorderedList",
-            "header": "Discord is the perfect platform for building a global, interactive community. It offers:",
-            "listItems": [
-                "Real-time conversations: Connect instantly with dreamers and researchers through chat, to share thoughts and experiences about induction methods, studies, experimental setups and more",
-                "Organized channels: Easily find discussions on topics like dream induction techniques, scientific findings, and the effects of lucid dreaming for mental well-being.",
-                "Collaboration opportunities: Researchers can share findings, challenges and can help each other refine research ideas."
             ]
         },
         {

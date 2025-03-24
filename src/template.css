@@ -33,7 +33,7 @@ nav > ul {
     list-style-type: none;
     flex-wrap: wrap;
     align-items: end;
-    font-size: clamp(1rem, 1rem + 2vw ,1.4rem);
+    font-size: clamp(1rem, 1rem + 0.7vw ,1.3rem);
     gap: clamp(0.5rem, 0.5rem + 0.5vw, 0.7rem);
     margin: 0;
     padding-left: 10px;
@@ -58,19 +58,7 @@ nav > ul {
 .nav-button-container > button:disabled{
     cursor: default;
     color: #756f52;
-    /* font-weight: 700; */
 }
-
-
-/* li > button::after {
-    display: block;
-    content: attr(title);
-    font-weight: 700;
-    height: 0;
-    color: transparent;
-    overflow: hidden;
-    visibility: hidden;
-} */
 
 main {
     display: flex;
