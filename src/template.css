@@ -120,5 +120,8 @@ footer > h4 {
     top: 0%;
     background-color: rgba(250, 235, 215, 0.363);
     border: 1px solid rgba(255, 0, 0, 0.521);
-    
+}
+
+.content-container {
+    text-align: justify;
 }
