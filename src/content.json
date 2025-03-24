@@ -62,16 +62,15 @@
             ]
         },
         {
+            "type": "photo",
+            "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/diagram.jfif"
+        },
+        {
             "type": "text",
             "header": "Analysis",
             "paragraphs": [
                 "In the ISoLDE project, sleep labs will collect questionnaire and sleep wearable-EEG data. To assess replicability and robustness of findings in sleep research, the data will be analyzed using a many analysts approach. More detailed information soon!"
             ]
-        },
-        {
-            "type": "photo",
-            "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/diagram.jfif",
-            "caption": "Study design diagram"
         }
     ],
     "participants": [
