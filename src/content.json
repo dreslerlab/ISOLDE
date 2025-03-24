@@ -2,7 +2,6 @@
     "about": [
         {
             "type": "text",
-            "header": "What is the idea?",
             "paragraphs": [
                 "Lucid dreaming (LD), the awareness of dreaming during sleep, has gained scientific interest due to its clinical potential and benefits, such as treating chronic nightmares, narcolepsy, and PTSD, as well as enhancing creativity and problem-solving. Eye movements performed after gaining dream awareness have become the research standard. Despite its promise, LD remains rare, with only 53% experiencing it once and 23% regularly (Saunders, 2016). This rarity poses challenges, as the neuroscience of LD is still partially understood.",
                 "Methods like Wake Back to Bed (WBTB), reality testing, and sensory stimulation during REM sleep aim to induce LD, but risks like sleep disruption and paralysis highlight the need for safer techniques. Neurobiological studies show changes in EEG patterns during LD but remain inconclusive due to methodological variability and participant differences.",
@@ -20,20 +19,20 @@
         {
             "type": "teamPhotos",
             "people": [
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/karolina.png"}
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"}
             ]
         },
         {
             "type": "timeline",
             "timelineEvents": [
-                { "date": "JANUARY 2025", "description": "TEXT TEXT TEXTX" },
-                { "date": "DECEMBER 2025", "description": "TEXT TEXT TEXTX" },
-                { "date": "JUNE 2026", "description": "TEXT TEXT TEXTX" }
+                { "date": "MARCH 2025", "description": "First meeting" },
+                { "date": "DECEMBER 2025", "description": "Data collection end" },
+                { "date": "JUNE 2026", "description": "End of data analysis" }
             ]
         }
     ],
@@ -60,39 +59,47 @@
     "community": [
         {
             "type": "text",
-            "header": "What can you expect from the Discord community?"
+            "header": "Join Our Lucid Dreaming Discord: A space for both lucid dreamers and researchers!",
+            "paragraphs": [
+                "Are you fascinated by lucid dreaming? Whether you're a dreamer looking to enhance your skills or a researcher studying the science behind it, our Lucid Dreaming Discord Community is the perfect place to connect."
+            ]
         },
         {
             "type": "unorderedList",
-            "header": "For Practitioners:",
+            "header": "For Dreamers:",
             "listItems": [
-                "Connect with Researchers and Fellow Dreamers: Share your lucid dreaming experiences and techniques with both fellow practitioners and experts in the field. Learn new methods for inducing and controlling dreams, as well as how lucid dreaming can enhance creativity and problem-solving.",
-                "Support and Advice: The community is a space for support. Whether you're struggling with dream recall, trying to enhance your control during lucid dreams, or facing specific challenges like nightmares, you’ll find guidance and encouragement from those with similar experiences.",
-                "Share Your Journey: Discuss your experiences with others, ask questions, and share insights about the emotional and cognitive aspects of lucid dreaming. Your story could help researchers refine their understanding of this fascinating phenomenon."
+                "Learn & Share: Exchange tips, techniques, and experiences with fellow lucid dreamers.",
+                "Get Support: Struggling with dream recall or taking control during your lucid dreams? Get advice from an active community.",
+                "Help Science: Share your experiences to contribute to ongoing research!"
             ]
         },
         {
             "type": "unorderedList",
             "header": "For Reseachers:",
             "listItems": [
-                "Real-World Insights: Gain direct access to a wealth of real-life experiences from lucid dreamers. This feedback can provide valuable context for your studies and spark new research questions or directions.",
-                "Collaborative Research Opportunities: The Discord community encourages collaboration, whether through informal discussions or more formal research projects. Researchers can engage with practitioners to refine experimental designs, develop new theories, or test out ideas in the field of lucid dreaming.",
-                "Access to a Global Community: Researchers from around the world can interact with lucid dreamers and fellow scientists, enriching the depth and breadth of their work."
+                "Real-World Insights: Talk with lucid dreamers to better understand the phenomenon, individual differences and its effects.",
+                "Collaborate: Discuss studies with other researchers and find participants. Moreover, lucid dreamers could offer valuable feedback to improve experimental setups.",
+                "Global Network: Connect with scientists and lucid dreamers worldwide."
             ]
         },
         {
             "type": "text",
-            "header": "Why Discord",
-            "paragraphs": [
-                "Discord is the perfect platform for building a close-knit, global community. It offers real-time communication, easy-to-navigate channels for discussions, and the ability to organize events like webinars, Q&A sessions, and collaborative brainstorming. Members can join different channels focused on topics like dream induction techniques, scientific findings, or mental health applications of lucid dreaming. It’s a space that grows and evolves with the community, offering a variety of ways to engage, learn, and connect."
+            "header": "Why Discord?"
+        },
+        {
+            "type": "unorderedList",
+            "header": "Discord is the perfect platform for building a global, interactive community. It offers:",
+            "listItems": [
+                "Real-time conversations: Connect instantly with dreamers and researchers through chat, to share thoughts and experiences about induction methods, studies, experimental setups and more",
+                "Organized channels: Easily find discussions on topics like dream induction techniques, scientific findings, and the effects of lucid dreaming for mental well-being.",
+                "Collaboration opportunities: Researchers can share findings, challenges and can help each other refine research ideas."
             ]
         },
         {
             "type": "text",
             "header": "How to join?",
             "paragraphs": [
-                "It’s easy to get started! Simply join our Lucid Dreaming Discord Community and begin exploring. Whether you’re here to learn more about lucid dreaming or to contribute your own knowledge and experiences, there’s a place for you. Connect with like-minded individuals, attend events, share your insights, and help us advance the collective understanding of lucid dreaming.",
-                "By joining our Discord community, you’re not just joining a server—you’re becoming part of a global effort to build a stronger connection between lucid dreamers and researchers. Together, we can push the boundaries of this fascinating field and make a real impact on our understanding of consciousness, sleep, and the human mind."
+                "Click the link below to join our Lucid Dreaming Discord and start exploring! Whether you're here to learn or contribute, there’s a place for you."
             ]
         }
     ]
