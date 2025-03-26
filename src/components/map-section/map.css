@@ -13,8 +13,6 @@
 
 .map-container img {
     width: 100%;
-    filter: invert(42%) sepia(10%) saturate(984%) hue-rotate(12deg) brightness(99%) contrast(89%);
-    transform: rotateZ(50%);
 }
 
 .map-point {
