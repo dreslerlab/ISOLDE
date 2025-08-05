@@ -3,15 +3,16 @@
     --navbar-border-color: #b1b49c;
 }
 
-html,
-body {
-    min-height: 100vw;
-    display: flex;
-    flex-direction: column;
+html, body {
+    min-height: 100%;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     scroll-behavior: smooth;
+    min-height: 100vh;
 }
 
 .top-nav {
@@ -62,7 +63,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100%;
+    flex-grow: 1;
+    /* min-height: 100%; */
 }
 
 main > div > p {
@@ -77,19 +79,20 @@ main > div {
 }
 
 
-.footer-pusher {
+/* .footer-pusher {
     flex-grow: 1;
-}
+} */
 
 footer {
-    position: relative;
-    clear: both;
+    /* position: relative; */
+    /* clear: both; */
     background-color: var(--main-color);
     padding: 0.7rem;
     padding-bottom: 1rem;
     padding-top: 0.7rem;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
     font-size: 1.05rem;
+    flex-grow: 0;
 }
 
 footer > h4 {
