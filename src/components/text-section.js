@@ -3,6 +3,9 @@ const textSection = (content) => {
     if (content.header) {
         const header = document.createElement("h4");
         header.innerHTML = content.header;
+        if (content.boldedHeader) {
+            header.style.fontWeight = "bold";
+        }
         container.appendChild(header);
     };
     if (content.paragraphs) {

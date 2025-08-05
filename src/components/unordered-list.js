@@ -3,6 +3,9 @@ const unorderedList = (content) => {
     if (content.header) {
         const header = document.createElement("p");
         header.textContent = content.header;
+        if (content.boldedHeader) {
+            header.style.fontWeight = "bold";
+        }
         container.appendChild(header);
     };
     const list = document.createElement("ul");

@@ -16,9 +16,6 @@
         {
             "type": "map",
             "mapPoints": [
-                {"x": 48.51, "y": 43.84, "name": "Cool Facility", "description": "I'm cool facility"},
-                {"x": 52.97, "y": 44.89, "name": "Extra Facility", "description": "I'm extra facility"},
-                {"x": 80.49, "y": 80.18, "name": "Giga Facility", "description": "I'm giga facility"}
             ]
         }
     ],
@@ -56,9 +53,6 @@
         {
             "type": "map",
             "mapPoints": [
-                {"x": 48.51, "y": 43.84, "name": "Cool Facility", "description": "I'm cool facility"},
-                {"x": 52.97, "y": 44.89, "name": "Extra Facility", "description": "I'm extra facility"},
-                {"x": 80.49, "y": 80.18, "name": "Giga Facility", "description": "I'm giga facility"}
             ]
         },
         {
@@ -150,7 +144,7 @@
      "contact": [
         {
             "type": "teamPhotos",
-            "header": "Study coordinators:",
+            "header": "Study coordinators",
             "people": [
                 {"name": "Karolina Raczek", "university": "RU, Netherlands and JU, Poland", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
                 {"name": "Sofia Tzioridou", "university": "RU, Netherlands", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
@@ -165,14 +159,15 @@
         },
         {
             "type": "text",
-            "header": "Coordinating research institute:",
+            "header": "Coordinating research institute",
             "paragraphs": [
                 "Donders Institute for Brain, Cognition and Behavior Radboud University Medical Center Kapittelweg 29, 6525 EN Nijmegen, The Netherlands"
             ]
         },
         {
             "type": "unorderedList",
-            "header": "Participating research groups:",
+            "header": "Participating research groups",
+            "boldedHeader": "true",
             "listItems": [
                 "The full list will be available soon."
             ]

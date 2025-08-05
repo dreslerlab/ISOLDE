@@ -1,9 +1,24 @@
 import './team-pictures.css';
 
-const teamContainer = (teamProfiles) => {
-    
+const teamContainer = (component) => {
+    const teamProfiles = component.people || [];
+    const headerText = component.header || undefined;
+    const teamOuterContainer = document.createElement("div");
+    teamOuterContainer.classList.add("team-outer-container");
+    console.log("teamProfiles", component);
+    console.log("headerText", headerText);
+    if (headerText) {
+        const header = document.createElement("h4");
+        header.innerHTML = headerText;
+        if (component.boldedHeader) {
+            header.style.fontWeight = "bold";
+        }
+        teamOuterContainer.appendChild(header);
+    }
+
     const teamContainer = document.createElement("div");
     teamContainer.classList.add("team-container");
+
 
     teamProfiles.forEach(profile => {
         const profileDiv = document.createElement("div");
@@ -22,8 +37,8 @@ const teamContainer = (teamProfiles) => {
 
         teamContainer.appendChild(profileDiv);
     });
-
-    return teamContainer;
+    teamOuterContainer.appendChild(teamContainer);
+    return teamOuterContainer;
 };
 
 export default teamContainer;

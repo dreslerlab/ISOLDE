@@ -12,7 +12,7 @@ const createFromComponent = (component) => {
         case "map":
             return mapSection(component.mapPoints);
         case "teamPhotos":
-            return teamPhotos(component.people);
+            return teamPhotos(component);
         case "timeline":
             return timelineSection(component);
         case "unorderedList":
