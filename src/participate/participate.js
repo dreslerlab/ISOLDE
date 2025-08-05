@@ -6,10 +6,6 @@ let participateSubpage = (content) => {
         const container = document.createElement("div");
         container.classList.add("content-container");
 
-        const reachOutSection = document.createElement("h4");
-        reachOutSection.innerHTML = `Don’t wait—join us today!<br>Reach out to your <a href="" target="_blank">regional coordinator</a> and be part of something big.`;
-        container.appendChild(reachOutSection);
-
         componentsLoader(content.participate, container);
 
         const widget = document.createElement("div");
