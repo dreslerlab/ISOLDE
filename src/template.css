@@ -78,19 +78,11 @@ main > div {
     margin: auto;
 }
 
-
-/* .footer-pusher {
-    flex-grow: 1;
-} */
-
 footer {
-    /* position: relative; */
-    /* clear: both; */
     background-color: var(--main-color);
     padding: 0.7rem;
     padding-bottom: 1rem;
     padding-top: 0.7rem;
-    /* justify-self: flex-end; */
     font-size: 1.05rem;
     flex-grow: 0;
 }
@@ -115,6 +107,7 @@ footer > h4 {
     text-align: justify;
     display: flex;
     flex-direction: column;
+    margin-top: 0;
 }
 
 .img-component {
