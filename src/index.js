@@ -2,25 +2,26 @@ import '../node_modules/modern-normalize/modern-normalize.css';
 import './template.css';
 import content from './content.json'
 import aboutSubpage from './about/about.js';
-import researchersSubpage from './researchers/researchers.js';
-import participantsSubpage from './participants/participants.js';
-import communitySubpage from './community/community.js';
+import researchSubpage from './research/research.js';
+import participateSubpage from './participate/participate.js';
+import faqSubpage from './faq/faq.js';
+import contactSubpage from './contant/contact.js';
 
 
 // (() => { // route pages
 //     const subpageContainer = document.querySelector(".subpage-container");
 //     const buttons = [
 //         document.querySelector("button.about"), 
-//         document.querySelector("button.researchers"), 
-//         document.querySelector("button.participants"),
-//         document.querySelector("button.community"),
+//         document.querySelector("button.research"), 
+//         document.querySelector("button.participate"),
+//         document.querySelector("button.faq"),
 //         // document.querySelector("button.contact")
 //     ]
 //     const subpages = [
 //         aboutSubpage(content),
-//         researchersSubpage(content),
-//         participantsSubpage(content),
-//         communitySubpage(content),
+//         researchSubpage(content),
+//         participateSubpage(content),
+//         faqSubpage(content),
 //         // contactSubpage
 //     ]
 //     const switchSubpage = (subpage) => {
@@ -43,20 +44,20 @@ import communitySubpage from './community/community.js';
 const subpageContainer = document.querySelector(".subpage-container");
 const buttons = [
     document.querySelector("button.about"), 
-    document.querySelector("button.researchers"), 
-    document.querySelector("button.participants"),
-    document.querySelector("button.community"),
-    // document.querySelector("button.contact")
+    document.querySelector("button.research"), 
+    document.querySelector("button.participate"),
+    document.querySelector("button.faq"),
+    document.querySelector("button.contact")
+
 ]
 function hotswapContent(content){
-    
-
+    console.log("Hotswapping content with:", content);
     const subpages = [
         aboutSubpage(content),
-        researchersSubpage(content),
-        participantsSubpage(content),
-        communitySubpage(content),
-        // contactSubpage
+        researchSubpage(content),
+        participateSubpage(content),
+        faqSubpage(content),
+        contactSubpage(content)
     ]
     const switchSubpage = (subpage) => {
         subpageContainer.textContent = "";
@@ -69,10 +70,12 @@ function hotswapContent(content){
         btn.disabled = true;
     });
 
-    const contactButton = document.querySelector("button.contact");
-    contactButton.onclick = () => window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
+    // const contactButton = document.querySelector("button.contact");
+    // contactButton.onclick = () => window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"});
 
     // website initial content
+    // force reload
+    buttons[1].click();
     buttons[0].click();
 }
 
@@ -82,6 +85,7 @@ hotswapContent(content);
 
 document.getElementById('submitBtn').addEventListener('click', function(e) {
     e.preventDefault();
+    console.log("File input clicked");
     
     const fileInput = document.getElementById('fileInput');
     

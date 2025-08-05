@@ -9,7 +9,7 @@ const unorderedList = (content) => {
     if (content.listItems) {
         content.listItems.forEach(e => {
             const item = document.createElement("li");
-            item.textContent = e;
+            item.innerHTML = e;
             list.appendChild(item);
         });
     };

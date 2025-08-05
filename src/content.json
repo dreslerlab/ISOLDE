@@ -1,6 +1,59 @@
 {
     "about": [
         {
+            "type": "text",
+            "paragraphs": [
+                "Are you dreaming right now? How would you know?",
+                "During daytime, we are rarely confused about our state of mind: we are sure to be awake, and are (mostly) correct about this. During sleep, in contrast, we often fail in judging our own state of mind: even during the most bizarre dream scenario, we typically do not realize that we are dreaming.",
+                "The exception from this rule is the phenomenon of Lucid Dreaming: becoming fully aware of the current dream state during ongoing sleep. However, lucid dreaming is rare: half of humanity never experiences a lucid dream, and even those who do have lucid dreams rarely, in most cases less than once per month.",
+                "This rarity makes the science of lucid dreaming challenging: most studies include only a few participants, as researchers cannot afford to spend weeks at night in the sleep laboratory to wait for a lucid dream to occur. ",
+                "While some people have lucid dreams on a more regular basis, either as a rare talent or through deliberate training, they typically cannot spend their nights for weeks or months in the sleep laboratory either - and only so many frequent lucid dreamers live close to a sleep research laboratory anyway.",
+                "However, recent innovations in neurotechnology allow to bring lucid dreaming research from the laboratory ‘into the wild’: wearable EEG headbands that record brain activity during sleep at home.",
+                "The International Study on Lucid Dreaming Expertise - or ISoLDE for short - aims to perform such research on the large scale: multiple research groups from six continents collaborate to investigate the brain activity of frequent lucid dreamers all across the world, thus creating the largest EEG dataset on lucid dreaming so far.",
+                "If you experience lucid dreams several times a week, please consider joining the study - you will have the opportunity to essentially contribute to the neuroscience of lucid dreaming, and also to join a vibrant community of lucid dreamers and researchers worldwide! "
+            ]
+        },
+        {
+            "type": "map",
+            "mapPoints": [
+                {"x": 48.51, "y": 43.84, "name": "Cool Facility", "description": "I'm cool facility"},
+                {"x": 52.97, "y": 44.89, "name": "Extra Facility", "description": "I'm extra facility"},
+                {"x": 80.49, "y": 80.18, "name": "Giga Facility", "description": "I'm giga facility"}
+            ]
+        }
+    ],
+    "research": [
+        {
+            "type": "text",
+            "header": "Research",
+            "paragraphs": [
+                "The study will include two groups of participants: the expert lucid dreamer group and a control group. All participants will complete a set of questionnaires. Throughout the study, participants will fill out a daily questionnaire on their experiences during the day and during sleep. Expert lucid dreamers further have the option to participate in detailed interviews. ",
+                "Lucid dreaming experts will wear an EEG headband during sleep for a period of four weeks. When experiencing a lucid dream, they will signal this using eye movements. During the first week (control week), they will be instructed to refrain from LD induction. For the three weeks, participants will attempt to induce LD using their own methods of choice (or no induction strategies in case of frequent spontaneous lucid dreams). ",
+                "The control group - individuals who have never experienced lucid dreaming - will wear the EEG device for one week. ",
+                "If you are a frequent lucid dreamer and consider joining the study, please contact the research group closest to you!",
+                "If you are a researcher and consider joining the study consortium, please contact the study coordinators!"
+            ]
+        },
+        {
+            "type": "unorderedList",
+            "header": "If you want to learn more about lucid dreaming, in the following you will find a few scientific publications that provide an overview on the latest research. ",
+            "listItems": [
+                "Zerr P, Adelhöfer N, Dresler M. The neuroscience of lucid dreaming: past, present, future. Neuron 2024, 112: 1040-1044. <a href=https://www.sciencedirect.com/science/article/pii/S0896627324001624/pdfft target='_blank' rel='noreferrer noopener'>[pdf]</a>",
+                "Tzioridou S, Campillo-Ferrer T, Cañas-Martín J, Schlüter L, Torres-Platas SG, Gott JA, Soffer-Dudek N, Stumbrys T, Dresler M. The clinical neuroscience of lucid dreaming. Neuroscience & Biobehavioral Reviews 2025, 169: 106011. <a href=https://www.sciencedirect.com/science/article/pii/S0149763425000119/pdfft?md5=c4ca8368e991d0af5941cf9e3001abaf&pid=1-s2.0-S0149763425000119-main.pdf target='_blank' rel='noreferrer noopener'>[pdf]</a>",
+                "Baird B, Mota-Rolim SA, Dresler M. The cognitive neuroscience of lucid dreaming. Neuroscience & Biobehavioral Reviews 2019, 100: 305-323. <a href=http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC6451677&blobtype=pdf target='_blank' rel='noreferrer noopener'>[pdf]</a>"
+            ]
+        }
+    ],
+    "participate": [
+        {
+            "type": "text",
+            "header": "Participate!",
+            "paragraphs": [
+                "Do you regularly realize that you are dreaming during ongoing sleep? We would be grateful if you were interested in joining our study at one of the participating research groups worldwide: You will have the opportunity to essentially contribute to the neuroscience of lucid dreaming, and also to join a vibrant international community of lucid dreamers and researchers! ",
+                "Reach out to your regional coordinator and be part of something big:"
+            ]
+        },
+        {
             "type": "map",
             "mapPoints": [
                 {"x": 48.51, "y": 43.84, "name": "Cool Facility", "description": "I'm cool facility"},
@@ -8,105 +61,6 @@
                 {"x": 80.49, "y": 80.18, "name": "Giga Facility", "description": "I'm giga facility"}
             ]
         },
-        {
-            "type": "text",
-            "paragraphs": [
-                "Becoming aware of the current dream state during ongoing sleep is referred to as lucid dreaming (LD) (Baird, B. et al., 2019). While 53% of people experience lucid dreaming at least once in their lifetime, the ability to induce it at will is rare (Saunders, D. T., 2016), posing challenges for research. Various methods, including cognitive-behavioral techniques, external stimulation, and substances, may increase LD likelihood. There are potential risks of LD such as disrupted sleep patterns, fatigue, confusion between sleep and reality, and sleep paralysis. Recent evidence suggests that these can be explained by failed induction attempts or poor dream control (Mallett et al., 2022). This underscores the need for effective and risk-eliminating methods, especially if LD is to be used for therapeutic purposes.",
-                "Compared to non-lucid REM sleep, recent neurobiological study of LD indicates a decrease in both posterior theta and beta power in the right temporoparietal junction. Furthermore, around the time of the first LD eye signaling, gamma activity involving the precuneus, left prefrontal cortex, and frontopolar areas was observed. Additionally, enhanced connectivity in the alpha band with a prominent hub in the left superior temporal gyrus, and increased gamma connectivity within bilateral frontotemporal regions, were revealed (Demirel, Ç et al., 2024). While progress has been made, a comprehensive understanding of the brain changes associated with lucid dreaming is still lacking. "
-            ]
-        },
-        {
-            "type": "unorderedList",
-            "header": "LD researchers face several fundamental problems:",
-            "listItems": [
-                "the difficulty of capturing the phenomenon during the often costly data acqusition",
-                "lack of an effective method of LD induction",
-                "as a result, small, underpowerd studies"
-            ]
-        },
-        {
-            "type": "text",
-            "paragraphs": [
-                "An approach attempting to solve the above struggles is ISoLDE. Instead of small studies with insufficient power, large-scale open science collaborations between several research labs have the potential to generate robust data, even for highly demanding data acquisition procedures. Moving research from the lab to the home setting, thanks to the increasing popularity of easy-to-use sleep wearables EEG, significantly reduces the cost of the experiment while increasing the chance of (repeatedly) capturing this phenomenon (Liang & Barr, 2024). In addition, home conditions make it easier for participants to take part in the experiment, offsetting the logistical difficulties associated with sleeping in a sleep lab, and show a more ecological picture of sleeping and dreaming.",
-                "Inviting LD experts to participate in the study, people who often have been training, testing and even creating their own individual induction methods for many years, provides a unique opportunity to catch the nuances of the phenomenon that, we as scientists, may often be unaware of. People who frequently experience LD often conduct experiments on their own, recording observations and sharing on numerous forums and social media groups. The use of scientific tools to describe the years of experience and psychological characteristics of LD enthusiasts will provide a basis for a holistic view of the phenomenon, which in the future may contribute to the creation of more effective methods, increasing control over dreaming in the first place, and not just awareness of it (Zerr, P., 2024)."
-            ]
-        },
-        {
-            "type": "teamPhotos",
-            "people": [
-                {"name": "Martin Dresler", "university": "RU, Netherlands", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Karolina Raczek", "university": "JU, Poland", "email": "Mail", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"}
-            ]
-        },
-        {
-            "type": "timeline",
-            "timelineEvents": [
-                { "date": "MARCH 2025", "description": "First meeting" },
-                { "date": "DECEMBER 2025", "description": "Data collection end" },
-                { "date": "JUNE 2026", "description": "End of data analysis" }
-            ]
-        }
-    ],
-    "researchers": [
-        {
-            "type": "text",
-            "header": "Data colletion",
-            "paragraphs": [
-                "The study will include two groups of participants: the LD expert group and a control group. All participants will complete a set of questionnaires assessing their biopsychosocial characteristics. Throughout the study, participants will fill out a daily questionnaire regarding their day and sleep details, as well as a weekly questionnaire measuring positive and negative affect. Additionally, the LD expert group will participate in a micro-phenomenological interview via Zoom and document their LD induction method in detail, either in writing or verbally, depending on their preference.",
-                "For a four-week period, LD experts will use wearable EEG devices during sleep. When experiencing a lucid dream, they will signal this using LRLR (left-right-left-right) eye movements. During the first week (control week), they will be instructed to refrain from LD induction while continuing to wear the EEG device. For the three weeks, participants will attempt to induce LD using their standard methods. The control group will wear the EEG device for one week. This group will be gender- and age-matched with the LD expert group and will consist of individuals who have never experienced lucid dreaming.",
-                "To ensure consistency, reproducibility, and interoperability of EEG data in our research, all recordings from the wearable EEG system should follow the Brain Imaging Data Structure (BIDS) standard, with adaptations for mobile EEG. The European Data Format (.edf) should be used."
-            ]
-        },
-        {
-            "type": "unorderedList",
-            "header": "Our goals:",
-            "listItems": [
-                "Create the largest EEG dataset on LD",
-                "Identify EEG state and trait markers",
-                "Investigate LD induction strategies",
-                "Examine associations with daytime measures",
-                "Strengthen and consolidate the international LD research community"
-            ]
-        },
-        {
-            "type": "text",
-            "header": "Analysis",
-            "paragraphs": [
-                "In the ISoLDE project, sleep labs will collect questionnaire and sleep wearable-EEG data. To ensure replicability and robustness, the merged dataset will be analyzed using a ‘many labs’ approach with multiple analysis groups and pre-registered methods. The study will also incorporate automatic sleep scoring and semi-automatic eye movement scoring. "
-            ]
-        },
-        {
-            "type": "unorderedList",
-            "header": "Example research questions:",
-            "listItems": [
-                "Power spectra (lucid vs non-lucid REM), particularly delta/theta/gamma bands",
-                "REM-wake sequences as predictor of lucidity",
-                "NREM lucidity",
-                "Correlations parametric lucidity and mood/stress/mindfulness"
-            ]
-        }
-    ],
-    "participants": [
-        {
-            "type": "text",
-            "header": "Who are we looking for?",
-            "paragraphs": [
-                "We’re looking for lucid dreaming enthusiasts who experience lucid dreams at least twice a week. If you’re passionate about exploring your dreams and want to contribute to scientific research, join us!"
-            ]
-        },
-        {
-            "type": "text",
-            "header": "Risks",
-            "paragraphs": [
-                "Participation in the study involves minimal risks. The non-invasive EEG recordings used are standard and safe procedures. However, individuals with light sleep may experience increased nighttime awakenings due to the presence of electrodes, which can occasionally cause mild skin irritation."
-            ]
-        }
-    ],
-    "community": [
         {
             "type": "text",
             "header": "Join Our Lucid Dreaming Discord: A space for both lucid dreamers and researchers!",
@@ -125,7 +79,7 @@
         },
         {
             "type": "unorderedList",
-            "header": "For Reseachers:",
+            "header": "For Researchers:",
             "listItems": [
                 "Talk with lucid dreamers to better understand the phenomenon, individual differences and its effects.",
                 "Discuss studies with other researchers and find participants. Moreover, lucid dreamers could offer valuable feedback to improve experimental setups.",
@@ -137,6 +91,90 @@
             "header": "How to join?",
             "paragraphs": [
                 "Click the link below to join our Lucid Dreaming Discord and start exploring! Whether you're here to learn or contribute, there’s a place for you."
+            ]
+        }
+
+    ],
+       "faq": [
+        {
+            "type": "text",
+            "header": "What is lucid dreaming?",
+            "paragraphs": [
+                "If during an ongoing dream you realize that you are actually dreaming, without waking up, you are experiencing a lucid dream. Sometimes lucid dreaming comes with a certain level of control over the dream content, or at least your own actions within the dream. "
+            ]
+        },
+        {
+            "type": "text",
+            "header": "Who are you looking for?",
+            "paragraphs": [
+                "We’re looking for lucid dreaming enthusiasts who experience lucid dreams at least twice a week. If you’re passionate about exploring your dreams and want to contribute to scientific research, join us!"
+            ]
+        },
+        {
+            "type": "text",
+            "header": "Do I need to be able to control my dreams?",
+            "paragraphs": [
+                "Proficient dream control is not necessary for this study, however there is one action during a dream you should be able to perform: moving your eyes from left to right repeatedly. It would be great if you would try this small exercise in your next lucid dream, to increase the chance to record helpful data. "
+            ]
+        },
+         {
+            "type": "text",
+            "header": "Am I allowed to actively induce lucid dreaming?",
+            "paragraphs": [
+                "We are interested in getting a broad picture of lucid dreaming. If you are used to become lucid with specific induction strategies, this is of as much interest to us as spontaneous lucid dreaming. We would be grateful if you would document your strategies in detail!"
+            ]
+        },
+                 {
+            "type": "text",
+            "header": "What is the goal of the study?",
+            "paragraphs": [
+                "Due to its rarity, lucid dreaming is typically investigated in very small studies. With the ISoLDE project, we aim to create the largest EEG database on lucid dreaming so far. This database will be open for many research groups for different analyses. In addition to the EEG data, we are very interested in best practices of experienced lucid dreamers how to induce lucid dreams. "
+            ]
+        },
+                 {
+            "type": "text",
+            "header": "Does lucid dreaming involve any risks?",
+            "paragraphs": [
+                "There is no indication that spontaneous lucid dreaming poses any risk. Certain lucid dreaming induction strategies may pose some obvious risks, e.g. side effects of sleep deprivation, brain stimulation, or pharmaceuticals. Even purely behavioral strategies may also pose some less obvious risks: developing the habit of repeatedly questioning your reality during the day (is this a dream?) may exacerbate existing dissociative tendencies. "
+            ]
+        },
+                 {
+            "type": "text",
+            "header": "Does the study involve any risks?",
+            "paragraphs": [
+                "Participation in the study involves minimal risks. The non-invasive EEG recordings used are standard and safe procedures. However, individuals with light sleep may experience increased nighttime awakenings due to the presence of electrodes, which can occasionally cause mild skin irritation."
+            ]
+        }
+        
+    ],
+     "contact": [
+        {
+            "type": "teamPhotos",
+            "header": "Study coordinators:",
+            "people": [
+                {"name": "Karolina Raczek", "university": "RU, Netherlands and JU, Poland", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Sofia Tzioridou", "university": "RU, Netherlands", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
+                {"name": "Martin Dresler ", "university": "RU, Netherlands", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"}
+            ]
+        },
+        {
+            "type": "text",
+            "paragraphs": [
+                "Email: isolde@donders.ru.nl"
+            ]
+        },
+        {
+            "type": "text",
+            "header": "Coordinating research institute:",
+            "paragraphs": [
+                "Donders Institute for Brain, Cognition and Behavior Radboud University Medical Center Kapittelweg 29, 6525 EN Nijmegen, The Netherlands"
+            ]
+        },
+        {
+            "type": "unorderedList",
+            "header": "Participating research groups:",
+            "listItems": [
+                "The full list will be available soon."
             ]
         }
     ]

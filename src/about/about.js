@@ -22,11 +22,8 @@ let aboutSubpage = (content) => {
     const studyTitle = document.createElement('h3');
     studyTitle.textContent = "International Study on Lucid Dreaming Expertise";
 
-    const studySubTitle = document.createElement('p');
-    studySubTitle.textContent = "The large-scale study of lucid dreaming";
 
     logoTextRightSubContainer.appendChild(studyTitle);
-    logoTextRightSubContainer.appendChild(studySubTitle);
 
     logoTextContainer.appendChild(logo);
     logoTextContainer.appendChild(logoTextRightSubContainer);

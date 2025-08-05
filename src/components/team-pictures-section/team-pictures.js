@@ -15,7 +15,7 @@ const teamContainer = (teamProfiles) => {
         
         const textDiv = document.createElement("div");
         textDiv.classList.add("profile-text");
-        textDiv.innerHTML = `<strong>${profile.name}</strong><br>${profile.university}<br>${profile.email}`;
+        textDiv.innerHTML = `<strong>${profile.name ? profile.name : ""}</strong><br>${profile.university ? profile.university : ""}<br>${profile.email ? profile.email : ""}`;
 
         profileDiv.appendChild(img);
         profileDiv.appendChild(textDiv);

@@ -5,7 +5,7 @@ const photo = (component) => {
     setTimeout(() => img.src = component.url, 0);
     figure.appendChild(img);
     const figcaption = document.createElement("figcaption");
-    figcaption.textContent = component.caption;
+    figcaption.innerHTML = component.caption;
     figure.appendChild(figcaption);
     return figure;
 };
