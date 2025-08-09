@@ -146,9 +146,9 @@
             "type": "teamPhotos",
             "header": "Study coordinators",
             "people": [
-                {"name": "Karolina Raczek", "university": "RU, Netherlands and JU, Poland", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Sofia Tzioridou", "university": "RU, Netherlands", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"},
-                {"name": "Martin Dresler ", "university": "RU, Netherlands", "url": "https://raw.githubusercontent.com/WWarzecha/ISOLDE/team-photos/1506603007.svg"}
+                {"name": "Karolina Raczek", "university": "Donders Institute, Netherlands and JU, Poland", "url": "https://raw.githubusercontent.com/dreslerlab/ISOLDE/team-photos/Karolina.png"},
+                {"name": "Sofia Tzioridou", "university": "Donders Institute, Netherlands", "url": "https://raw.githubusercontent.com/dreslerlab/ISOLDE/team-photos/Sofia.png"},
+                {"name": "Martin Dresler ", "university": "Donders Institute, Netherlands", "url": "https://raw.githubusercontent.com/dreslerlab/ISOLDE/team-photos/Martin.png"}
             ]
         },
         {
@@ -161,7 +161,7 @@
             "type": "text",
             "header": "Coordinating research institute",
             "paragraphs": [
-                "Donders Institute for Brain, Cognition and Behavior Radboud University Medical Center Kapittelweg 29, 6525 EN Nijmegen, The Netherlands"
+                "Donders Institute for Brain, Cognition and Behavior<br/>Radboud University Medical<br/>Center Kapittelweg 29, 6525 EN Nijmegen, The Netherlands"
             ]
         },
         {
