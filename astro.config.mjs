@@ -9,4 +9,7 @@ export default defineConfig({
   base: '/ISOLDE',
   trailingSlash: 'always',
   integrations: [sitemap()],
+  // Fetch the other pages' HTML (2–3 kB gzipped each) as soon as their links are visible, so clicks feel
+  // instant, on phones too. Astro skips this with Data Saver on or on 2G connections.
+  prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },
 });

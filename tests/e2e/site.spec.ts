@@ -61,6 +61,16 @@ test('nav items keep their size when they become the current item', async ({ pag
   }
 });
 
+test('the other pages are prefetched in the background once the home page loads', async ({ page }) => {
+  const requested = new Set<string>();
+  page.on('request', (request) => requested.add(new URL(request.url()).pathname));
+  await page.goto('');
+  for (const path of ['research/', 'participate/', 'faq/', 'contact/']) {
+    await expect.poll(() => requested.has(`/ISOLDE/${path}`), { message: `prefetch of /ISOLDE/${path}` }).toBe(true);
+  }
+  await expect(page).toHaveURL(/\/ISOLDE\/$/);
+});
+
 test('unknown URLs get the 404 page', async ({ page }) => {
   const response = await page.goto('does-not-exist/');
   expect(response?.status()).toBe(404);
