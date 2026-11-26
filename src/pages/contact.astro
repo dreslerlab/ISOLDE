@@ -1,0 +1,49 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import { getCoordinators, getPage, getSites } from '../lib/queries';
+
+const page = await getPage('contact');
+const { Content } = await render(page);
+const coordinators = await getCoordinators();
+const sites = await getSites();
+const { address } = page.data;
+---
+
+<BaseLayout title={page.data.title} description={page.data.description}>
+  <h1>{page.data.title}</h1>
+  <TeamGrid people={coordinators} heading="Study coordinators" />
+  <Content />
+  {
+    address && (
+      <>
+        <h2>{address.heading}</h2>
+        <address>
+          {address.lines.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))}
+        </address>
+      </>
+    )
+  }
+
+  <h2>Participating research groups</h2>
+  {
+    sites.length === 0 ? (
+      <p>The full list will be available soon.</p>
+    ) : (
+      <ul>
+        {sites.map((site) => (
+          <li>
+            {site.data.institution ? `${site.data.institution}, ` : ''}
+            {site.data.city}, {site.data.country}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type DiscordContent = NonNullable<CollectionEntry<'pages'>['data']['discord']>;
+
+interface Props {
+  content: DiscordContent;
+  inviteUrl: string;
+}
+
+const { content, inviteUrl } = Astro.props;
+---
+
+<!-- A plain invite link, no embedded widget: nothing is loaded from Discord until the visitor clicks. -->
+<section class="discord" aria-labelledby="discord-heading">
+  <h2 id="discord-heading">{content.heading}</h2>
+  <p>{content.intro}</p>
+
+  <h3>{content.dreamersHeading}</h3>
+  <ul>{content.forDreamers.map((item) => <li>{item}</li>)}</ul>
+
+  <h3>{content.researchersHeading}</h3>
+  <ul>{content.forResearchers.map((item) => <li>{item}</li>)}</ul>
+
+  <h3>{content.joinHeading}</h3>
+  <p>{content.joinText}</p>
+  <p>
+    <a class="button discord__join" href={inviteUrl}>Join our Discord server</a>
+  </p>
+</section>
+
+<style>
+  .discord__join {
+    text-decoration: none;
+  }
+</style>

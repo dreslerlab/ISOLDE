@@ -1,0 +1,25 @@
+---
+import { site } from '../lib/site';
+---
+
+<footer class="site-footer">
+  <p>
+    {site.footerText}<br />
+    <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+  </p>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: 0.75rem 1rem;
+    background: var(--color-surface);
+    font-size: 1.05rem;
+  }
+
+  /* Same box as <main> (max width incl. gutter) so the text lines up with the content column. */
+  .site-footer p {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+  }
+</style>

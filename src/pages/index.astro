@@ -1,0 +1,41 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StudyMap from '../components/StudyMap.astro';
+import { getPage, getSites } from '../lib/queries';
+import { site } from '../lib/site';
+import logo from '../assets/isolde-logo.svg';
+
+const page = await getPage('about');
+const { Content } = await render(page);
+const sites = await getSites();
+---
+
+<BaseLayout description={page.data.description}>
+  <div class="hero">
+    <img src={logo.src} width={logo.width} height={logo.height} alt="" />
+    <h1>{site.studyTitle}</h1>
+  </div>
+  <Content />
+  <StudyMap sites={sites} instance="about" />
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero img {
+    width: clamp(6rem, 5rem + 10vw, 14rem);
+    height: auto;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem);
+  }
+</style>

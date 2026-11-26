@@ -1,0 +1,42 @@
+---
+import { site } from '../lib/site';
+import { url } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const OG_IMAGE_WIDTH_PX = 1200;
+const OG_IMAGE_HEIGHT_PX = 630;
+
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(url('og-image.png'), Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+<link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={url('apple-touch-icon.png')} />
+<link rel="sitemap" href={url('sitemap-index.xml')} />
+<meta name="theme-color" content="#000000" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.shortName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content={String(OG_IMAGE_WIDTH_PX)} />
+<meta property="og:image:height" content={String(OG_IMAGE_HEIGHT_PX)} />
+<meta property="og:image:alt" content={`${site.shortName} logo – ${site.studyTitle}`} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<script is:inline>
+  document.documentElement.classList.add('js');
+</script>

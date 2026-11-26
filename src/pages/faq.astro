@@ -1,0 +1,16 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqList from '../components/FaqList.astro';
+import { getFaq, getPage } from '../lib/queries';
+
+const page = await getPage('faq');
+const { Content } = await render(page);
+const entries = await getFaq();
+---
+
+<BaseLayout title="FAQ" description={page.data.description}>
+  <h1>{page.data.title}</h1>
+  <Content />
+  <FaqList entries={entries} />
+</BaseLayout>

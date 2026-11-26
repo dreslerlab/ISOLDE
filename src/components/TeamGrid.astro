@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  people: CollectionEntry<'team'>[];
+  heading: string;
+}
+
+/** Display width in CSS px; 2× variant is generated only if the source photo is large enough. */
+const PHOTO_WIDTH_PX = 160;
+
+const { people, heading } = Astro.props;
+---
+
+<section class="team" aria-labelledby="team-heading">
+  <h2 id="team-heading">{heading}</h2>
+  <ul class="team-grid">
+    {
+      people.map((person) => (
+        <li class="profile">
+          <Image
+            src={person.data.photo}
+            alt={person.data.photoAlt ?? `Portrait of ${person.data.name}`}
+            width={PHOTO_WIDTH_PX}
+            densities={[1, 2]}
+            format="webp"
+          />
+          <p class="profile-text">
+            <strong>{person.data.name}</strong>
+            <br />
+            {person.data.affiliation}
+            {person.data.email && (
+              <>
+                <br />
+                <a href={`mailto:${person.data.email}`}>{person.data.email}</a>
+              </>
+            )}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .profile img {
+    display: block;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .profile-text {
+    position: relative;
+    margin: -1.5rem 0 0 1.5rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--color-surface);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+</style>

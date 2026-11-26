@@ -1,0 +1,21 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StudyMap from '../components/StudyMap.astro';
+import DiscordSection from '../components/DiscordSection.astro';
+import { getPage, getSites } from '../lib/queries';
+import { site } from '../lib/site';
+
+const page = await getPage('participate');
+const { Content } = await render(page);
+const sites = await getSites();
+const discord = page.data.discord;
+if (!discord) throw new Error('src/content/pages/participate.md is missing the "discord" section');
+---
+
+<BaseLayout title="Participate" description={page.data.description}>
+  <h1>{page.data.title}</h1>
+  <Content />
+  <StudyMap sites={sites} instance="participate" />
+  <DiscordSection content={discord} inviteUrl={site.discordInviteUrl} />
+</BaseLayout>
