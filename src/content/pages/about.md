@@ -1,8 +1,9 @@
 ---
 title: About
-description: ISOLDE, the International Study on Lucid Dreaming Expertise, records the sleep EEG of frequent lucid dreamers worldwide. Find out how to take part.
+description: ISOLDE, the International Study on Lucid Dreaming Expertise,
+  records the sleep EEG of frequent lucid dreamers worldwide. Find out how to
+  take part.
 ---
-
 Are you dreaming right now? How would you know?
 
 During daytime, we are rarely confused about our state of mind: we are sure to be awake, and are (mostly) correct about this. During sleep, in contrast, we often fail in judging our own state of mind: even during the most bizarre dream scenario, we typically do not realize that we are dreaming.
