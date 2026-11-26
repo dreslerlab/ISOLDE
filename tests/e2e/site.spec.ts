@@ -1,4 +1,6 @@
+import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
+import { TEAM_FILE, teamEntriesFromYaml } from '../../src/lib/team';
 
 const PAGES = [
   { path: '', title: 'ISOLDE · International Study on Lucid Dreaming Expertise', nav: 'About' },
@@ -8,6 +10,10 @@ const PAGES = [
   { path: 'contact/', title: 'Contact · ISOLDE', nav: 'Contact' },
 ];
 const EMPTY_STATE = 'Participating sites will be announced soon.';
+// Coordinators shown on Contact, read from the content so adding someone in Pages CMS doesn't break tests.
+const COORDINATOR_NAMES = teamEntriesFromYaml(readFileSync(new URL(`../../${TEAM_FILE}`, import.meta.url), 'utf8'))
+  .filter((person) => (person.role ?? 'coordinator') === 'coordinator')
+  .map((person) => String(person.name));
 
 for (const page of PAGES) {
   test(`/${page.path} renders under /ISOLDE/ with one h1, head metadata and current nav item`, async ({
@@ -113,8 +119,10 @@ test('map shows the empty state when no study sites exist', async ({ page }) => 
 test('contact page shows self-hosted, optimized team photos and a mailto link', async ({ page }) => {
   await page.goto('contact/');
   const photos = page.locator('.team-grid img');
-  await expect(photos).toHaveCount(3);
-  for (const name of ['Karolina Raczek', 'Sofia Tzioridou', 'Martin Dresler']) {
+  await expect(photos).toHaveCount(COORDINATOR_NAMES.length);
+  // Same order as in coordinators.yml (the order editors set by dragging in Pages CMS).
+  await expect(page.locator('.team-grid strong')).toHaveText(COORDINATOR_NAMES);
+  for (const name of COORDINATOR_NAMES) {
     const img = page.getByRole('img', { name: `Portrait of ${name}` });
     await expect(img).toHaveAttribute('src', /^\/ISOLDE\/_astro\/.+\.webp$/);
     await expect(img).toHaveAttribute('srcset', / 2x$/);
