@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { groupByCountry } from '../lib/sites';
+
+interface Props {
+  sites: CollectionEntry<'sites'>[];
+}
+
+const groups = groupByCountry(Astro.props.sites);
+---
+
+<div class="site-list">
+  {
+    groups.map((group) => (
+      <section>
+        <h3>{group.country}</h3>
+        <ul>
+          {group.sites.map((site) => (
+            <li>
+              <strong>{site.data.city}</strong>
+              {site.data.institution && <> – {site.data.institution}</>}
+              {site.data.contactEmail && (
+                <>
+                  {' '}
+                  (<a href={`mailto:${site.data.contactEmail}`}>{site.data.contactEmail}</a>)
+                </>
+              )}
+              {!site.data.recruiting && <> – not recruiting at the moment</>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .site-list h3 {
+    margin-top: 1rem;
+  }
+
+  .site-list ul {
+    margin-top: 0.25rem;
+  }
+</style>

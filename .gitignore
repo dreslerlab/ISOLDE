@@ -1,2 +1,7 @@
 node_modules
 dist
+dist-fixture
+.astro
+coverage
+playwright-report
+test-results

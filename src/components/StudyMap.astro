@@ -1,0 +1,203 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { project, worldMap } from '../lib/map-projection';
+import SiteList from './SiteList.astro';
+
+interface Props {
+  sites: CollectionEntry<'sites'>[];
+  /** Unique per page, keeps dialog ids unique if a page ever shows two maps. */
+  instance: string;
+}
+
+const EMPTY_STATE_TEXT = 'Participating sites will be announced soon.';
+
+const { sites, instance } = Astro.props;
+const entries = await Promise.all(
+  sites.map(async (site) => ({
+    site,
+    position: project(site.data.lat, site.data.lon),
+    dialogId: `map-${instance}-${site.id}`,
+    Content: (await render(site)).Content,
+  })),
+);
+const plotted = entries.flatMap((entry) => (entry.position ? [{ ...entry, position: entry.position }] : []));
+---
+
+<section class="study-map" data-study-map aria-labelledby={`map-${instance}-heading`}>
+  <h2 id={`map-${instance}-heading`}>Participating research sites</h2>
+  <figure>
+    <div class="study-map__canvas" style={`aspect-ratio: ${worldMap.width} / ${worldMap.height}`}>
+      <img
+        src={worldMap.src}
+        width={worldMap.width}
+        height={worldMap.height}
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      {
+        plotted.map(({ site, position, dialogId }) => (
+          <button
+            type="button"
+            class="study-map__point"
+            style={`--x: ${position.x}%; --y: ${position.y}%`}
+            aria-haspopup="dialog"
+            aria-controls={dialogId}
+            {...{ commandfor: dialogId, command: 'show-modal' }}
+            data-dialog={dialogId}
+          >
+            <span class="visually-hidden">
+              {site.data.city}, {site.data.country}
+            </span>
+          </button>
+        ))
+      }
+    </div>
+    <figcaption>
+      {
+        sites.length === 0
+          ? EMPTY_STATE_TEXT
+          : 'Map of participating research sites. Select a point for details, or use the list below.'
+      }
+    </figcaption>
+  </figure>
+
+  {sites.length > 0 && <SiteList sites={sites} />}
+
+  {
+    plotted.map(({ site, dialogId, Content }) => (
+      <dialog id={dialogId} class="site-dialog" aria-labelledby={`${dialogId}-title`} {...{ closedby: 'any' }}>
+        <div class="site-dialog__body">
+          <h2 id={`${dialogId}-title`}>
+            {site.data.city}, {site.data.country}
+          </h2>
+          {site.data.institution && <p class="site-dialog__institution">{site.data.institution}</p>}
+          <Content />
+          {site.data.contactEmail && (
+            <p>
+              Regional coordinator: <a href={`mailto:${site.data.contactEmail}`}>{site.data.contactEmail}</a>
+            </p>
+          )}
+          <form method="dialog">
+            <button class="button" type="submit">
+              Close
+            </button>
+          </form>
+        </div>
+      </dialog>
+    ))
+  }
+</section>
+
+<script>
+  // Native Invoker Commands (commandfor/command) open the dialogs without JS where supported.
+  // This adds a fallback for older browsers and closes a dialog when its backdrop is clicked.
+  const supportsInvokerCommands = 'commandForElement' in HTMLButtonElement.prototype;
+
+  // Backdrop click closes (fallback where closedby="any" is unsupported). Require the press to start on the
+  // backdrop too, so a text selection dragged from inside the dialog does not close it.
+  document.querySelectorAll<HTMLDialogElement>('dialog.site-dialog').forEach((dialog) => {
+    let pressedOnBackdrop = false;
+    dialog.addEventListener('pointerdown', (event) => {
+      pressedOnBackdrop = event.target === dialog;
+    });
+    dialog.addEventListener('click', (event) => {
+      if (pressedOnBackdrop && event.target === dialog) dialog.close();
+      pressedOnBackdrop = false;
+    });
+  });
+
+  if (!supportsInvokerCommands) {
+    document.querySelectorAll<HTMLButtonElement>('.study-map__point[data-dialog]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const dialog = document.getElementById(button.dataset.dialog ?? '');
+        if (dialog instanceof HTMLDialogElement) dialog.showModal();
+      });
+    });
+  }
+</script>
+
+<style>
+  .study-map {
+    margin-block: 2rem;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  .study-map__canvas {
+    position: relative;
+    width: 100%;
+  }
+
+  .study-map__canvas img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 24×24 px hit target (WCAG 2.2, 2.5.8) around a 10 px visible dot. */
+  .study-map__point {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    translate: -50% -50%;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .study-map__point::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 2px #fff;
+    transition: transform 150ms ease-out;
+  }
+
+  .study-map__point:hover::before,
+  .study-map__point:focus-visible::before {
+    transform: scale(1.4);
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .site-dialog {
+    max-width: min(32rem, calc(100vw - 2rem));
+    padding: 0;
+    border: 0;
+    border-radius: 0.5rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .site-dialog::backdrop {
+    background: rgb(0 0 0 / 0.45);
+  }
+
+  .site-dialog__body {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .site-dialog h2 {
+    margin-top: 0;
+  }
+
+  .site-dialog__institution {
+    margin-top: -0.25rem;
+    font-weight: 600;
+  }
+</style>

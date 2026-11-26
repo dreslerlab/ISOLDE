@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+---
+
+<BaseLayout title="Page not found" description="This page does not exist." noindex>
+  <h1>Page not found</h1>
+  <p>Sorry, this page does not exist. Go to the <a href={url()}>ISOLDE home page</a>.</p>
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props {
+  entries: CollectionEntry<'faq'>[];
+}
+
+const items = await Promise.all(
+  Astro.props.entries.map(async (entry) => ({
+    id: entry.id,
+    question: entry.data.question,
+    Content: (await render(entry)).Content,
+  })),
+);
+---
+
+<nav class="faq-toc" aria-label="Questions on this page">
+  <ul>
+    {
+      items.map((item) => (
+        <li>
+          <a href={`#${item.id}`}>{item.question}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+{
+  items.map(({ id, question, Content }) => (
+    <section class="faq-item" aria-labelledby={id}>
+      <h2 id={id}>{question}</h2>
+      <Content />
+    </section>
+  ))
+}
+
+<style>
+  .faq-toc ul {
+    padding-left: 1.25rem;
+  }
+
+  .faq-item h2 {
+    scroll-margin-top: 1rem;
+  }
+</style>

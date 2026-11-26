@@ -1,0 +1,147 @@
+---
+import { NAV_ITEMS } from '../config/nav';
+import { isCurrentPath, url } from '../lib/url';
+import logo from '../assets/isolde-logo.svg';
+
+const currentPath = Astro.url.pathname;
+const items = NAV_ITEMS.map((item) => {
+  const href = url(item.path);
+  return { ...item, href, isCurrent: isCurrentPath(currentPath, href) };
+});
+---
+
+<header class="site-header">
+  <a class="brand" href={url()}>
+    <img src={logo.src} width={logo.width} height={logo.height} alt="ISOLDE – home" />
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+      <rect y="3" width="20" height="2.5" rx="1"></rect>
+      <rect y="8.75" width="20" height="2.5" rx="1"></rect>
+      <rect y="14.5" width="20" height="2.5" rx="1"></rect>
+    </svg>
+    Menu
+  </button>
+  <nav aria-label="Main">
+    <ul id="site-nav" class="nav-list">
+      {
+        items.map((item) => (
+          <li>
+            <a href={item.href} aria-current={item.isCurrent ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  if (toggle) {
+    const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+    const setOpen = (open: boolean) => toggle.setAttribute('aria-expanded', String(open));
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen()) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Matches the pre-Astro site: plain text links on the light bar, current page in grey. */
+  .site-header {
+    --nav-current: #6b6549; /* the old #756f52, darkened just enough for 4.5:1 on the bar */
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem 0;
+    background: var(--color-surface);
+  }
+
+  .brand img {
+    display: block;
+    width: auto;
+    height: clamp(3.5rem, 3rem + 4vw, 5rem);
+  }
+
+  .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.5rem, 0.5rem + 0.5vw, 0.7rem);
+    margin: 0 0.7rem 0.37rem 0;
+    padding: 0;
+    list-style: none;
+    font-size: clamp(1rem, 1rem + 0.7vw, 1.3rem);
+  }
+
+  .nav-list a {
+    display: block;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-list a:hover {
+    text-decoration: underline;
+  }
+
+  .nav-list a[aria-current='page'] {
+    color: var(--nav-current);
+  }
+
+  .nav-list a[aria-current='page']:hover {
+    text-decoration: none;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  @media (max-width: 40rem) {
+    .site-header {
+      align-items: center;
+      padding-bottom: 0.5rem;
+    }
+
+    nav {
+      flex-basis: 100%;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 0;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .nav-list a {
+      padding: 0.75rem 1rem;
+    }
+
+    :global(.js) .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 2.75rem;
+      padding: 0.5rem 0.9rem;
+      border: 0;
+      border-radius: var(--radius);
+      background: none;
+      color: var(--color-text);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    :global(.js) .nav-toggle[aria-expanded='false'] + nav .nav-list {
+      display: none;
+    }
+  }
+</style>

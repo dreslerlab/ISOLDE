@@ -1,0 +1,19 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StudyMap from '../components/StudyMap.astro';
+import DiscordSection from '../components/DiscordSection.astro';
+import { getPage, getSites } from '../lib/queries';
+import { discord } from '../lib/discord';
+
+const page = await getPage('participate');
+const { Content } = await render(page);
+const sites = await getSites();
+---
+
+<BaseLayout title="Participate" description={page.data.description}>
+  <h1>{page.data.title}</h1>
+  <Content />
+  <StudyMap sites={sites} instance="participate" />
+  <DiscordSection content={discord} />
+</BaseLayout>
