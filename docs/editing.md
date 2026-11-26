@@ -16,7 +16,7 @@ Check locally before pushing: `npm run dev` (live preview at http://localhost:43
 | Page text (About, Research, Participate, FAQ intro, Contact) | `src/content/pages/<page>.md`: `title`, `description` (max. 160 characters, used by search engines), then the text |
 | Discord section on Participate, including the invite link | `src/data/discord.json` |
 | FAQ questions | `src/content/faq/*.md`: one file per question (`question`, `order`), with the answer below |
-| Study coordinators | `src/content/team/*.md` + photo in `src/content/team/photos/` |
+| Study coordinators | `src/content/team/coordinators.yml` (one list, in display order) + photos in `src/content/team/photos/` |
 | Study sites (map + lists) | `src/content/sites/<city>.md`: one file per site |
 | Study title, contact email, footer text | `src/data/site.json` |
 
@@ -47,7 +47,7 @@ If one city gets a second site, name the file `<city>-2.md`.
 
 **Swap a team photo.** Replace the file in `src/content/team/photos/` and keep the same name; no code change
 is needed. Photos of at least 320×320 px look sharp on high-resolution screens. If the file type changes
-(e.g. `.png` → `.jpg`), update the `photo:` line in that person's `.md`.
+(e.g. `.png` → `.jpg`), update that person's `photo:` line in `coordinators.yml`.
 
 **Change the Discord invite link.** In Pages CMS open **Participate → Discord** and edit **Invite link**, or
 edit `inviteUrl` in `src/data/discord.json`. It must look like `https://discord.gg/abc123` (or
@@ -67,7 +67,7 @@ The sidebar follows the website's menu; each page groups everything shown on it:
 | Participate → Study sites (map) | one entry per site: city, country, institution, latitude/longitude, contact email, recruiting, popup text. Sites appear on the map (About and Participate) and on Contact |
 | FAQ → Page text, Questions | the page intro; one entry per question, **Position** sets the order (1 = first) |
 | Contact → Page text | heading, description, text and postal address |
-| Contact → Study coordinators | name, affiliation, photo (upload in the photo picker), email, position |
+| Contact → Study coordinators | one list of people: name, affiliation, photo (upload in the photo picker), email. **Drag** a person by the handle to change the order on the Contact page |
 | Site settings | study title, contact email and footer text used on every page |
 
 Every **Save** is a commit to `main`, so it goes through the same build, tests and deploy (1–2 minutes).
@@ -75,8 +75,9 @@ If a value is invalid, the build fails and the live site keeps the previous vers
 the Actions tab names the file and field.
 
 Things to know:
-- The file name of a new FAQ question becomes its link anchor (`/ISOLDE/faq/#<file-name>`), so renaming
-  it later breaks links to that question.
+- File names are generated automatically: from the question for FAQ entries and from the city for study
+  sites. A FAQ file name is also the question's link anchor (`/ISOLDE/faq/#<file-name>`); editing the
+  question later does not rename the file, so existing links keep working.
 - Upload team photos through the photo picker. They are stored in `src/content/team/photos/` and written
   as `photos/<file>`, which is the form the build expects.
 - Images can't be inserted into page text; the pages don't use any.

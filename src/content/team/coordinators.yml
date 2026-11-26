@@ -1,0 +1,16 @@
+# Study coordinators, in the order they appear on the Contact page.
+# Photos live in ./photos/ and are referenced as photos/<file>.
+coordinators:
+  - name: Karolina Raczek
+    affiliation: Donders Institute, Netherlands and JU, Poland
+    photo: photos/karolina.png
+  - name: Sofia Tzioridou
+    affiliation: Donders Institute, Netherlands
+    photo: photos/sofia.png
+  - name: Martin Dresler
+    affiliation: Donders Institute, Netherlands
+    photo: photos/martin.png
+  - name: Maureen Minnema
+    affiliation: Donders Institute, Netherlands
+    photo: photos/maureen-minnema.png
+    email: isolde@donders.ru.nl

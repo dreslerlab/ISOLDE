@@ -5,7 +5,7 @@
 # The build validates everything again, so a bad value fails the deploy instead of going live.
 
 media:
-  # Coordinator photos sit next to the coordinator files. Astro resolves `photos/x.png` relative to the .md file.
+  # Coordinator photos sit next to coordinators.yml. Astro resolves `photos/x.png` relative to that file.
   - name: team-photos
     label: Coordinator photos
     input: src/content/team/photos
@@ -112,8 +112,9 @@ content:
         format: yaml-frontmatter
         exclude: [.gitkeep]
         filename:
+          # Generated from the city.
           template: '{city}.md'
-          field: create
+          field: false
         view:
           fields: [city, country, institution, recruiting]
           primary: city
@@ -162,9 +163,9 @@ content:
         path: src/content/faq
         format: yaml-frontmatter
         filename:
-          # The file name becomes the question's link anchor: /ISOLDE/faq/#<file-name>.
+          # Generated from the question; it becomes the link anchor /ISOLDE/faq/#<file-name>.
           template: '{question}.md'
-          field: create
+          field: false
         view:
           fields: [question, order]
           primary: question
@@ -197,41 +198,38 @@ content:
 
       - name: team
         label: Study coordinators
-        type: collection
-        path: src/content/team
-        format: yaml-frontmatter
-        exclude: [photos]
-        filename:
-          template: '{name}.md'
-          field: create
-        view:
-          fields: [name, affiliation, order]
-          primary: name
-          sort: [order, name]
-          default: { sort: order, order: asc }
+        type: file
+        path: src/content/team/coordinators.yml
+        format: yaml
         fields:
-          - { name: name, label: Name, type: string, required: true }
-          - { name: affiliation, label: Affiliation, type: string, required: true }
-          - name: photo
-            label: Photo
-            description: Square, at least 320 × 320 px.
-            type: image
-            required: true
-            options: { media: team-photos }
-          - name: photoAlt
-            label: Photo description
-            description: 'For screen readers. Leave empty to use "Portrait of <name>".'
-            type: string
-          - name: role
-            label: Role
-            type: select
-            default: coordinator
-            options:
-              values:
-                - { name: coordinator, label: Coordinator (shown on Contact) }
-                - { name: researcher, label: Researcher (not shown) }
-          - { name: email, component: email }
-          - { name: order, component: order }
+          - name: coordinators
+            # Label, not description: Pages CMS repeats a list field's description under every item.
+            label: Coordinators (drag to reorder; shown on Contact in this order)
+            type: object
+            list:
+              collapsible: { collapsed: true, summary: '{name}' }
+            fields:
+              - { name: name, label: Name, type: string, required: true }
+              - { name: affiliation, label: Affiliation, type: string, required: true }
+              - name: photo
+                label: Photo
+                description: Square, at least 320 × 320 px.
+                type: image
+                required: true
+                options: { media: team-photos }
+              - name: photoAlt
+                label: Photo description
+                description: 'For screen readers. Leave empty to use "Portrait of <name>".'
+                type: string
+              - name: role
+                label: Role
+                type: select
+                default: coordinator
+                options:
+                  values:
+                    - { name: coordinator, label: Coordinator (shown on Contact) }
+                    - { name: researcher, label: Researcher (not shown) }
+              - { name: email, component: email }
 
   - name: site
     label: Site settings

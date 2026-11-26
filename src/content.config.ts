@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { TEAM_FILE, teamEntriesFromYaml } from './lib/team';
 
 // Test builds point this at tests/fixtures/sites to exercise the map with data.
 const SITES_DIR = process.env.ISOLDE_SITES_DIR ?? './src/content/sites';
@@ -36,8 +37,10 @@ const faq = defineCollection({
   }),
 });
 
+// All coordinators in one list (src/content/team/coordinators.yml), so Pages CMS can reorder them by
+// dragging. The list position becomes `order` and the name becomes the id (see src/lib/team.ts).
 const team = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/team' }),
+  loader: file(TEAM_FILE, { parser: teamEntriesFromYaml }),
   schema: ({ image }) =>
     z.object({
       name: z.string().trim().min(1),

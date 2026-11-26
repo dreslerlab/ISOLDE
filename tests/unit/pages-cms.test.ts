@@ -37,10 +37,12 @@ type Data = Record<string, unknown>;
 
 const ROOT = new URL('../../', import.meta.url);
 const read = (path: string): string => readFileSync(new URL(path, ROOT), 'utf8');
-const markdownFilesIn = (dir: string): string[] =>
+const filesIn = (dir: string, extensions: RegExp): string[] =>
   readdirSync(new URL(`${dir}/`, ROOT))
-    .filter((file) => file.endsWith('.md'))
+    .filter((file) => extensions.test(file))
     .map((file) => `${dir}/${file}`);
+const markdownFilesIn = (dir: string): string[] => filesIn(dir, /\.md$/);
+const CONTENT_FILE = /\.(md|ya?ml|json)$/;
 
 // Same parser options as Pages CMS (lib/config.ts): note they do not enable YAML merge keys (`<<:`).
 const rawConfig = read('.pages.yml');
@@ -60,6 +62,7 @@ const FRONT_MATTER = /^---\n([\s\S]*?)\n---\n?([\s\S]*)$/;
 function readEntry(path: string, format: string | undefined): { data: Data; body: string } {
   const text = read(path);
   if (format === 'json') return { data: JSON.parse(text) as Data, body: '' };
+  if (format === 'yaml') return { data: (parse(text) ?? {}) as Data, body: '' };
   const match = FRONT_MATTER.exec(text);
   if (!match) throw new Error(`${path} has no front matter`);
   return { data: (parse(match[1] ?? '') ?? {}) as Data, body: (match[2] ?? '').trim() };
@@ -68,14 +71,19 @@ function readEntry(path: string, format: string | undefined): { data: Data; body
 const filesOf = (entry: CmsEntry): string[] =>
   entry.type === 'file' ? [entry.path ?? ''] : markdownFilesIn(entry.path ?? '');
 
-/** Keys present in the data but not declared as fields (nested objects included, as "parent.child"). */
+/** Keys present in the data but not declared as fields (nested objects and lists of objects included). */
 function undeclaredKeys(data: Data, fields: CmsField[], prefix = ''): string[] {
   const byName = new Map(fields.map((field) => [field.name, field]));
   return Object.entries(data).flatMap(([key, value]) => {
     const field = byName.get(key);
     if (!field) return [`${prefix}${key}`];
-    const isObject = value !== null && typeof value === 'object' && !Array.isArray(value);
-    return field.fields && isObject ? undeclaredKeys(value as Data, field.fields, `${prefix}${key}.`) : [];
+    if (!field.fields) return [];
+    const items = Array.isArray(value) ? value : [value];
+    return items.flatMap((item, index) => {
+      if (item === null || typeof item !== 'object' || Array.isArray(item)) return [];
+      const at = Array.isArray(value) ? `${prefix}${key}[${index}].` : `${prefix}${key}.`;
+      return undeclaredKeys(item as Data, field.fields ?? [], at);
+    });
   });
 }
 
@@ -99,13 +107,24 @@ describe('.pages.yml', () => {
     }
   });
 
+  it('writes `list` as true or an object with `collapsible`, as Pages CMS requires', () => {
+    for (const entry of leaves) {
+      for (const field of allFields(entry.fields ?? [])) {
+        const { list } = field as CmsField & { list?: unknown };
+        if (list !== undefined && typeof list !== 'boolean') {
+          expect(list, `${entry.name}.${field.name}`).toHaveProperty('collapsible');
+        }
+      }
+    }
+  });
+
   it('covers every content file and every data file', () => {
     const managed = new Set(leaves.flatMap(filesOf));
     const contentDirs = ['src/content/pages', 'src/content/faq', 'src/content/team', 'src/content/sites'];
     const dataFiles = readdirSync(new URL('src/data/', ROOT))
       .filter((file) => file.endsWith('.json'))
       .map((file) => `src/data/${file}`);
-    for (const file of [...contentDirs.flatMap(markdownFilesIn), ...dataFiles]) {
+    for (const file of [...contentDirs.flatMap((dir) => filesIn(dir, CONTENT_FILE)), ...dataFiles]) {
       expect(managed, `${file} is not editable in Pages CMS`).toContain(file);
     }
   });
@@ -124,15 +143,19 @@ describe('.pages.yml', () => {
 
   it('resolves team photos to files the CMS media library can show and replace', () => {
     const team = entryNamed('team');
-    const photoField = team.fields?.find((field) => field.name === 'photo');
+    const listField = team.fields?.find((field) => field.name === 'coordinators');
+    const photoField = listField?.fields?.find((field) => field.name === 'photo');
     const media = config.media.find((source) => source.name === photoField?.options?.media);
     expect(media, 'team photo field must name a media source').toBeDefined();
     if (!media) return;
 
-    for (const file of filesOf(team)) {
-      const photo = String(readEntry(file, team.format).data.photo);
+    const [file] = filesOf(team);
+    const coordinators = readEntry(file ?? '', team.format).data.coordinators as Data[];
+    expect(coordinators.length).toBeGreaterThan(0);
+    for (const person of coordinators) {
+      const photo = String(person.photo);
       // Pages CMS strips "./" before matching `output`, so values must start with the bare output path.
-      expect(photo.startsWith(`${media.output}/`), `${file}: ${photo}`).toBe(true);
+      expect(photo.startsWith(`${media.output}/`), `${String(person.name)}: ${photo}`).toBe(true);
       expect(existsSync(new URL(`${media.input}/${photo.slice(media.output.length + 1)}`, ROOT))).toBe(true);
     }
   });
