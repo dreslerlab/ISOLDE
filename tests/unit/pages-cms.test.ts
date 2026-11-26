@@ -107,6 +107,18 @@ describe('.pages.yml', () => {
     }
   });
 
+  it('lets optional fields with a pattern stay empty (Pages CMS checks patterns on empty values too)', () => {
+    const resolve = (field: CmsField) => ({ ...(field.component ? config.components[field.component] : {}), ...field });
+    for (const entry of leaves) {
+      for (const field of allFields(entry.fields ?? []).map(resolve)) {
+        const { pattern, required } = field as CmsField & { pattern?: string | { regex: string }; required?: boolean };
+        if (!pattern || required) continue;
+        const regex = new RegExp(typeof pattern === 'string' ? pattern : pattern.regex);
+        expect(regex.test(''), `${entry.name}.${field.name} rejects an empty value`).toBe(true);
+      }
+    }
+  });
+
   it('writes `list` as true or an object with `collapsible`, as Pages CMS requires', () => {
     for (const entry of leaves) {
       for (const field of allFields(entry.fields ?? [])) {

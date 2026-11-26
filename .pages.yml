@@ -41,8 +41,9 @@ components:
   email:
     label: Email
     type: string
+    # Empty is allowed here: Pages CMS checks patterns on empty fields too; `required: true` blocks empty.
     pattern:
-      regex: '^[^\s@]+@[^\s@]+\.[^\s@]+$'
+      regex: '^([^\s@]+@[^\s@]+\.[^\s@]+)?$'
       message: 'Enter an email address, e.g. isolde@donders.ru.nl'
 
 # The sidebar follows the website's menu: each page groups everything that appears on it.
