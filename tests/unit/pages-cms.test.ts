@@ -99,10 +99,13 @@ describe('.pages.yml', () => {
     }
   });
 
-  it('covers every content file and the site settings', () => {
+  it('covers every content file and every data file', () => {
     const managed = new Set(leaves.flatMap(filesOf));
     const contentDirs = ['src/content/pages', 'src/content/faq', 'src/content/team', 'src/content/sites'];
-    for (const file of [...contentDirs.flatMap(markdownFilesIn), 'src/data/site.json']) {
+    const dataFiles = readdirSync(new URL('src/data/', ROOT))
+      .filter((file) => file.endsWith('.json'))
+      .map((file) => `src/data/${file}`);
+    for (const file of [...contentDirs.flatMap(markdownFilesIn), ...dataFiles]) {
       expect(managed, `${file} is not editable in Pages CMS`).toContain(file);
     }
   });

@@ -18,18 +18,6 @@ const pages = defineCollection({
       .string({ error: 'Every page needs a description (used by search engines and link previews)' })
       .min(1)
       .max(160, 'Keep the description at 160 characters or fewer'),
-    discord: z
-      .object({
-        heading: z.string().min(1),
-        intro: z.string().min(1),
-        dreamersHeading: z.string().min(1),
-        forDreamers: z.array(z.string().min(1)).min(1),
-        researchersHeading: z.string().min(1),
-        forResearchers: z.array(z.string().min(1)).min(1),
-        joinHeading: z.string().min(1),
-        joinText: z.string().min(1),
-      })
-      .optional(),
     // Contact page: the postal address block under its own heading.
     address: z
       .object({

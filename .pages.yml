@@ -1,13 +1,13 @@
 # Pages CMS configuration: https://pagescms.org/docs/configuration/
 #
-# Mirrors the content schemas in src/content.config.ts and src/lib/site.ts. Every field the site reads is
+# Mirrors the content schemas in src/content.config.ts, src/lib/site.ts and src/lib/discord.ts. Every field the site reads is
 # declared here, so saving from the CMS never drops one; tests/unit/pages-cms.test.ts checks this.
 # The build validates everything again, so a bad value fails the deploy instead of going live.
 
 media:
-  # Team photos sit next to the team files. Astro resolves `photos/x.png` relative to the .md file.
+  # Coordinator photos sit next to the coordinator files. Astro resolves `photos/x.png` relative to the .md file.
   - name: team-photos
-    label: Team photos
+    label: Coordinator photos
     input: src/content/team/photos
     output: photos
     extensions: [jpg, jpeg, png, webp, avif]
@@ -45,33 +45,34 @@ components:
       regex: '^[^\s@]+@[^\s@]+\.[^\s@]+$'
       message: 'Enter an email address, e.g. isolde@donders.ru.nl'
 
+# The sidebar follows the website's menu: each page groups everything that appears on it.
 content:
-  - name: pages
-    label: Pages
+  - name: about
+    label: About (home page)
+    type: file
+    path: src/content/pages/about.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, component: title }
+      - { name: description, component: description }
+      - { name: body, component: body }
+
+  - name: research
+    label: Research
+    type: file
+    path: src/content/pages/research.md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, component: title }
+      - { name: description, component: description }
+      - { name: body, component: body }
+
+  - name: participate-group
+    label: Participate
     type: group
     items:
-      - name: about
-        label: About (home page)
-        type: file
-        path: src/content/pages/about.md
-        format: yaml-frontmatter
-        fields:
-          - { name: title, component: title }
-          - { name: description, component: description }
-          - { name: body, component: body }
-
-      - name: research
-        label: Research
-        type: file
-        path: src/content/pages/research.md
-        format: yaml-frontmatter
-        fields:
-          - { name: title, component: title }
-          - { name: description, component: description }
-          - { name: body, component: body }
-
       - name: participate
-        label: Participate
+        label: Page text
         type: file
         path: src/content/pages/participate.md
         format: yaml-frontmatter
@@ -79,23 +80,74 @@ content:
           - { name: title, component: title }
           - { name: description, component: description }
           - { name: body, component: body }
-          - name: discord
-            label: Discord section
-            description: The invite link itself is in Site settings.
-            type: object
-            required: true
-            fields:
-              - { name: heading, label: Heading, type: string, required: true }
-              - { name: intro, label: Introduction, type: text, required: true }
-              - { name: dreamersHeading, label: Dreamers heading, type: string, required: true }
-              - { name: forDreamers, label: Points for dreamers, type: text, required: true, list: true }
-              - { name: researchersHeading, label: Researchers heading, type: string, required: true }
-              - { name: forResearchers, label: Points for researchers, type: text, required: true, list: true }
-              - { name: joinHeading, label: '"How to join" heading', type: string, required: true }
-              - { name: joinText, label: '"How to join" text', type: text, required: true }
 
+      - name: discord
+        label: Discord
+        type: file
+        path: src/data/discord.json
+        format: json
+        fields:
+          - { name: heading, label: Heading, type: string, required: true }
+          - { name: intro, label: Introduction, type: text, required: true }
+          - { name: dreamersHeading, label: Dreamers heading, type: string, required: true }
+          - { name: forDreamers, label: Points for dreamers, type: text, required: true, list: true }
+          - { name: researchersHeading, label: Researchers heading, type: string, required: true }
+          - { name: forResearchers, label: Points for researchers, type: text, required: true, list: true }
+          - { name: joinHeading, label: '"How to join" heading', type: string, required: true }
+          - { name: joinText, label: '"How to join" text', type: text, required: true }
+          - name: inviteUrl
+            label: Invite link
+            description: 'Shown as the "Join our Discord server" button. Create the invite in Discord with "Expire after: Never".'
+            type: string
+            required: true
+            pattern:
+              regex: '^https://(discord\.gg|discord\.com/invite)/[A-Za-z0-9-]+/?$'
+              message: 'Use a Discord invite link, e.g. https://discord.gg/abc123'
+
+      - name: sites
+        label: Study sites (map)
+        description: Shown on the map (About and Participate) and listed on Contact.
+        type: collection
+        path: src/content/sites
+        format: yaml-frontmatter
+        exclude: [.gitkeep]
+        filename:
+          template: '{city}.md'
+          field: create
+        view:
+          fields: [city, country, institution, recruiting]
+          primary: city
+          sort: [country, city]
+          default: { sort: country, order: asc }
+        fields:
+          - { name: city, label: City, type: string, required: true }
+          - { name: country, label: Country, type: string, required: true }
+          - { name: institution, label: Institution, type: string }
+          - name: lat
+            label: Latitude
+            description: 'Decimal degrees, north positive, e.g. 51.8425 for Nijmegen. Right-click the place on openstreetmap.org and choose "Show address".'
+            type: number
+            required: true
+            options: { min: -90, max: 90 }
+          - name: lon
+            label: Longitude
+            description: 'Decimal degrees, east positive, e.g. 5.8528 for Nijmegen.'
+            type: number
+            required: true
+            options: { min: -180, max: 180 }
+          - { name: contactEmail, component: email, label: Contact email }
+          - name: recruiting
+            label: Recruiting participants
+            type: boolean
+            default: true
+          - { name: body, label: Map popup text, type: rich-text, options: { media: false } }
+
+  - name: faq-group
+    label: FAQ
+    type: group
+    items:
       - name: faq-page
-        label: FAQ (page intro)
+        label: Page text
         type: file
         path: src/content/pages/faq.md
         format: yaml-frontmatter
@@ -104,8 +156,31 @@ content:
           - { name: description, component: description }
           - { name: body, component: body }
 
+      - name: faq
+        label: Questions
+        type: collection
+        path: src/content/faq
+        format: yaml-frontmatter
+        filename:
+          # The file name becomes the question's link anchor: /ISOLDE/faq/#<file-name>.
+          template: '{question}.md'
+          field: create
+        view:
+          fields: [question, order]
+          primary: question
+          sort: [order, question]
+          default: { sort: order, order: asc }
+        fields:
+          - { name: question, label: Question, type: string, required: true }
+          - { name: order, component: order }
+          - { name: body, label: Answer, type: rich-text, required: true, options: { media: false } }
+
+  - name: contact-group
+    label: Contact
+    type: group
+    items:
       - name: contact
-        label: Contact
+        label: Page text
         type: file
         path: src/content/pages/contact.md
         format: yaml-frontmatter
@@ -120,102 +195,47 @@ content:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: lines, label: Address lines, type: string, required: true, list: true }
 
-  - name: faq
-    label: FAQ questions
-    type: collection
-    path: src/content/faq
-    format: yaml-frontmatter
-    filename:
-      # The file name becomes the question's link anchor: /ISOLDE/faq/#<file-name>.
-      template: '{question}.md'
-      field: create
-    view:
-      fields: [question, order]
-      primary: question
-      sort: [order, question]
-      default: { sort: order, order: asc }
-    fields:
-      - { name: question, label: Question, type: string, required: true }
-      - { name: order, component: order }
-      - { name: body, label: Answer, type: rich-text, required: true, options: { media: false } }
-
-  - name: team
-    label: Study coordinators
-    type: collection
-    path: src/content/team
-    format: yaml-frontmatter
-    exclude: [photos]
-    filename:
-      template: '{name}.md'
-      field: create
-    view:
-      fields: [name, affiliation, order]
-      primary: name
-      sort: [order, name]
-      default: { sort: order, order: asc }
-    fields:
-      - { name: name, label: Name, type: string, required: true }
-      - { name: affiliation, label: Affiliation, type: string, required: true }
-      - name: photo
-        label: Photo
-        description: Square, at least 320 × 320 px.
-        type: image
-        required: true
-        options: { media: team-photos }
-      - name: photoAlt
-        label: Photo description
-        description: 'For screen readers. Leave empty to use "Portrait of <name>".'
-        type: string
-      - name: role
-        label: Role
-        type: select
-        default: coordinator
-        options:
-          values:
-            - { name: coordinator, label: Coordinator (shown on Contact) }
-            - { name: researcher, label: Researcher (not shown) }
-      - { name: email, component: email }
-      - { name: order, component: order }
-
-  - name: sites
-    label: Study sites
-    type: collection
-    path: src/content/sites
-    format: yaml-frontmatter
-    exclude: [.gitkeep]
-    filename:
-      template: '{city}.md'
-      field: create
-    view:
-      fields: [city, country, institution, recruiting]
-      primary: city
-      sort: [country, city]
-      default: { sort: country, order: asc }
-    fields:
-      - { name: city, label: City, type: string, required: true }
-      - { name: country, label: Country, type: string, required: true }
-      - { name: institution, label: Institution, type: string }
-      - name: lat
-        label: Latitude
-        description: 'Decimal degrees, north positive, e.g. 51.8425 for Nijmegen. Right-click the place on openstreetmap.org and choose "Show address".'
-        type: number
-        required: true
-        options: { min: -90, max: 90 }
-      - name: lon
-        label: Longitude
-        description: 'Decimal degrees, east positive, e.g. 5.8528 for Nijmegen.'
-        type: number
-        required: true
-        options: { min: -180, max: 180 }
-      - { name: contactEmail, component: email, label: Contact email }
-      - name: recruiting
-        label: Recruiting participants
-        type: boolean
-        default: true
-      - { name: body, label: Map popup text, type: rich-text, options: { media: false } }
+      - name: team
+        label: Study coordinators
+        type: collection
+        path: src/content/team
+        format: yaml-frontmatter
+        exclude: [photos]
+        filename:
+          template: '{name}.md'
+          field: create
+        view:
+          fields: [name, affiliation, order]
+          primary: name
+          sort: [order, name]
+          default: { sort: order, order: asc }
+        fields:
+          - { name: name, label: Name, type: string, required: true }
+          - { name: affiliation, label: Affiliation, type: string, required: true }
+          - name: photo
+            label: Photo
+            description: Square, at least 320 × 320 px.
+            type: image
+            required: true
+            options: { media: team-photos }
+          - name: photoAlt
+            label: Photo description
+            description: 'For screen readers. Leave empty to use "Portrait of <name>".'
+            type: string
+          - name: role
+            label: Role
+            type: select
+            default: coordinator
+            options:
+              values:
+                - { name: coordinator, label: Coordinator (shown on Contact) }
+                - { name: researcher, label: Researcher (not shown) }
+          - { name: email, component: email }
+          - { name: order, component: order }
 
   - name: site
     label: Site settings
+    description: Used on every page.
     type: file
     path: src/data/site.json
     format: json
@@ -224,11 +244,3 @@ content:
       - { name: shortName, label: Short name, type: string, required: true }
       - { name: contactEmail, component: email, label: Contact email, required: true }
       - { name: footerText, label: Footer text, type: text, required: true }
-      - name: discordInviteUrl
-        label: Discord invite link
-        description: 'Shown as the "Join our Discord server" button on the Participate page. Create the invite in Discord with "Expire after: Never".'
-        type: string
-        required: true
-        pattern:
-          regex: '^https://(discord\.gg|discord\.com/invite)/[A-Za-z0-9-]+/?$'
-          message: 'Use a Discord invite link, e.g. https://discord.gg/abc123'

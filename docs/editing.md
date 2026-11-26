@@ -14,11 +14,11 @@ Check locally before pushing: `npm run dev` (live preview at http://localhost:43
 | What | File |
 |---|---|
 | Page text (About, Research, Participate, FAQ intro, Contact) | `src/content/pages/<page>.md`: `title`, `description` (max. 160 characters, used by search engines), then the text |
-| Discord section on Participate | the `discord:` block in `src/content/pages/participate.md` |
+| Discord section on Participate, including the invite link | `src/data/discord.json` |
 | FAQ questions | `src/content/faq/*.md`: one file per question (`question`, `order`), with the answer below |
 | Study coordinators | `src/content/team/*.md` + photo in `src/content/team/photos/` |
 | Study sites (map + lists) | `src/content/sites/<city>.md`: one file per site |
-| Study title, contact email, footer text, Discord invite link | `src/data/site.json` (also editable in Pages CMS, see below) |
+| Study title, contact email, footer text | `src/data/site.json` |
 
 ## Common tasks
 
@@ -49,23 +49,26 @@ If one city gets a second site, name the file `<city>-2.md`.
 is needed. Photos of at least 320×320 px look sharp on high-resolution screens. If the file type changes
 (e.g. `.png` → `.jpg`), update the `photo:` line in that person's `.md`.
 
-**Change the Discord invite link.** In Pages CMS open **Site settings** and edit **Discord invite link**, or
-edit `discordInviteUrl` in `src/data/site.json`. It must look like `https://discord.gg/abc123` (or
+**Change the Discord invite link.** In Pages CMS open **Participate → Discord** and edit **Invite link**, or
+edit `inviteUrl` in `src/data/discord.json`. It must look like `https://discord.gg/abc123` (or
 `https://discord.com/invite/abc123`); anything else fails the build, so the old link stays live. Create the
 invite in Discord with **Expire after: Never**, or the link will stop working.
 
 ## Pages CMS
 
 Open https://app.pagescms.org, sign in with GitHub and pick `dreslerlab/ISOLDE` and the `main` branch.
-The sidebar has:
+The sidebar follows the website's menu; each page groups everything shown on it:
 
 | Pages CMS section | Edits |
 |---|---|
-| Pages | the five pages: heading, search engine description, text; the Discord section (Participate) and postal address (Contact) |
-| FAQ questions | one entry per question; **Position** sets the order (1 = first) |
-| Study coordinators | name, affiliation, photo (upload in the photo picker), email, position |
-| Study sites | city, country, institution, latitude/longitude, contact email, recruiting, popup text |
-| Site settings | study title, contact email, footer text, Discord invite link |
+| About (home page), Research | heading, search engine description, text |
+| Participate → Page text | heading, search engine description, text |
+| Participate → Discord | the Discord section, including the invite link |
+| Participate → Study sites (map) | one entry per site: city, country, institution, latitude/longitude, contact email, recruiting, popup text. Sites appear on the map (About and Participate) and on Contact |
+| FAQ → Page text, Questions | the page intro; one entry per question, **Position** sets the order (1 = first) |
+| Contact → Page text | heading, description, text and postal address |
+| Contact → Study coordinators | name, affiliation, photo (upload in the photo picker), email, position |
+| Site settings | study title, contact email and footer text used on every page |
 
 Every **Save** is a commit to `main`, so it goes through the same build, tests and deploy (1–2 minutes).
 If a value is invalid, the build fails and the live site keeps the previous version; the failed run in

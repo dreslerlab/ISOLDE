@@ -1,14 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-
-type DiscordContent = NonNullable<CollectionEntry<'pages'>['data']['discord']>;
+import type { DiscordContent } from '../lib/discord';
 
 interface Props {
   content: DiscordContent;
-  inviteUrl: string;
 }
 
-const { content, inviteUrl } = Astro.props;
+const { content } = Astro.props;
 ---
 
 <!-- A plain invite link, no embedded widget: nothing is loaded from Discord until the visitor clicks. -->
@@ -25,7 +22,7 @@ const { content, inviteUrl } = Astro.props;
   <h3>{content.joinHeading}</h3>
   <p>{content.joinText}</p>
   <p>
-    <a class="button discord__join" href={inviteUrl}>Join our Discord server</a>
+    <a class="button discord__join" href={content.inviteUrl}>Join our Discord server</a>
   </p>
 </section>
 
