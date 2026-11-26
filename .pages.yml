@@ -203,8 +203,8 @@ content:
         format: yaml
         fields:
           - name: coordinators
-            label: Coordinators
-            description: Shown on the Contact page in this order. Drag a person by the handle to move them; use the button below the list to add someone.
+            # Label, not description: Pages CMS repeats a list field's description under every item.
+            label: Coordinators (drag to reorder; shown on Contact in this order)
             type: object
             list:
               collapsible: { collapsed: true, summary: '{name}' }
